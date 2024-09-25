@@ -1,0 +1,30 @@
+// src/style/main.scss
+// ! Uncomment imports as the files are added to the project or removed if unused
+
+// 1. abstract/utils imports
+@import './abstract/variables.scss';
+@import './abstract/functions.scss';
+@import './abstract/mixins.scss';
+@import './abstract/colors.scss';
+@import './abstract/typography.scss';
+
+// 2. Base imports
+@import './base/reset.scss';
+@import './base/global.scss';
+
+// 3. Layout imports
+// @import 'layout/grid';
+// @import 'layout/containers';
+
+// 4. Components imports
+// @import 'components/button';
+// @import 'components/header';
+// @import 'components/footer';
+
+// 5. Page imports
+// @import 'pages/home';
+// @import 'pages/about';
+@import 'pages/app'; // ! temporary only for vite template page
+
+// 6. Themes imports (if any), preferable if you ask me :)
+// @import 'themes/dark';

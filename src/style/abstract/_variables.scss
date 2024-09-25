@@ -1,0 +1,10 @@
+// src/style/abstract/_variables.scss
+
+// Breakpoints for media queries
+$pageWidthDesk: pxToRem(1200);
+$pageWidthTab: pxToRem(768);
+$pageWidthMob: pxToRem(400);
+
+// Spacing units
+$headerHeight: pxToRem(80);
+$footerHeight: pxToRem(80);

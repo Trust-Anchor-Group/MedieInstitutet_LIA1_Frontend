@@ -1,0 +1,59 @@
+// src/style/abstract/_colors.scss
+// ! Just use one to start with if do not intende to add dark mode/light mode swithcing in V1
+
+// Light theme colors - Default theme
+// ! Change these colors to match the TAG design colors and add/remove as needed
+$light-background-color: lightgrey;
+$light-primary-color: #3498db;
+$light-secondary-color: green;
+$light-button-primary-color: #262626;
+$light-button-text-color: #d87946;
+$light-border-color: brown;
+$light-card-color: grey;
+$light-font-color: black;
+$light-error-color: #ff6b6b;
+$light-success-color: #51cf66;
+$light-accentuate-color: #f39c12;
+
+// Dark theme colors - Optional
+// ! Change these colors to match the TAG design colors and add/remove as needed
+$dark-background-color: black;
+$dark-primary-color: white;
+$dark-secondary-color: green;
+$dark-button-primary-color: darkorange;
+$dark-button-text-color: black;
+$dark-border-color: brown;
+$dark-card-color: grey;
+$dark-font-color: white;
+$dark-error-color: #ff8787;
+$dark-success-color: #69db7c;
+$dark-accentuate-color: #f39c12;
+
+// CSS variables defined 
+:root {
+  --background-color: #{$light-background-color};
+  --primary-color: #{$light-primary-color};
+  --secondary-color: #{$light-secondary-color};
+  --button-primary-color: #{$light-button-primary-color};
+  --button-text-color: #{$light-button-text-color};
+  --border-color: #{$light-border-color};
+  --card-color: #{$light-card-color};
+  --font-color: #{$light-font-color};
+  --error-color: #{$light-error-color};
+  --success-color: #{$light-success-color};
+  --accentuate-color: #{$light-accentuate-color};
+}
+
+[data-theme='dark'] {
+  --background-color: #{$dark-background-color};
+  --primary-color: #{$dark-primary-color};
+  --secondary-color: #{$dark-secondary-color};
+  --button-primary-color: #{$dark-button-primary-color};
+  --button-text-color: #{$dark-button-text-color};
+  --border-color: #{$dark-border-color};
+  --card-color: #{$dark-card-color};
+  --font-color: #{$dark-font-color};
+  --error-color: #{$dark-error-color};
+  --success-color: #{$dark-success-color};
+  --accentuate-color: #{$dark-accentuate-color};
+}

@@ -1,0 +1,19 @@
+// src/style/abstract/_mixins.scss
+
+// This mixin centers content using flexbox, if we remember to use it :)
+// Usage: @include flex-center;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// This mixin provides a simple way to create responsive breakpoints
+// Usage: @include responsive(tablet) { ... }
+@mixin responsive($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: $pageWidthTab) { @content; }
+  } @else if $breakpoint == mobile {
+    @media (max-width: $pageWidthMob) { @content; }
+  }
+}

@@ -1,0 +1,6 @@
+// src/style/abstract/_functions.scss
+
+// pxToRem function to convert pixel values to rem
+@function pxToRem($size) {
+  @return calc($size / 16) * 1rem;
+}
