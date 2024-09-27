@@ -5,6 +5,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 // Set up basic styles for the body
@@ -15,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; // Ensures the body is at least the full height of the viewport
+  width: 100%;
 }
 
 // Styles for the root div in React applications
@@ -22,6 +24,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; // This ensures the React app takes up at least the full viewport height
+  width: 100%;
+  text-align: start !important;
 }
 
 // Main content area styles
