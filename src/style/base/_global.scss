@@ -25,16 +25,18 @@ body {
   flex-direction: column;
   min-height: 100vh; // This ensures the React app takes up at least the full viewport height
   width: 100%;
-  text-align: start !important;
+    max-width: $pageWidthDesk; // Uses the desktop page width variable
+    margin-right: auto;
+  	margin-left: auto;
+    padding: 0 pxToRem(20); // Adds some horizontal padding
 }
 
 // Main content area styles
 main {
   flex: 1 0 auto; // This allows the main content to grow and push the footer down
   width: 100%;
-  max-width: $pageWidthDesk; // Uses the desktop page width variable
-  margin: 0 auto;
-  padding: 0 pxToRem(16); // Adds some horizontal padding
+ margin: 0 auto;
+  
 }
 
 // Basic heading styles

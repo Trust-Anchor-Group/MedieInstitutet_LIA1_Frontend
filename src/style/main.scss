@@ -2,8 +2,8 @@
 // ! Uncomment imports as the files are added to the project or removed if unused
 
 // 1. abstract/utils imports
-@import './abstract/variables.scss';
 @import './abstract/functions.scss';
+@import './abstract/variables.scss';
 @import './abstract/mixins.scss';
 @import './abstract/colors.scss';
 @import './abstract/typography.scss';
@@ -24,7 +24,7 @@
 // 5. Page imports
 // @import 'pages/home';
 // @import 'pages/about';
-@import 'pages/app'; // ! temporary only for vite template page
+
 
 // 6. Themes imports (if any), preferable if you ask me :)
 // @import 'themes/dark';

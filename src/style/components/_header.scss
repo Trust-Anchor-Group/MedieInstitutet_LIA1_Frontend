@@ -1,16 +1,15 @@
 header {
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-color); // Using CSS variable from _colors.scss
   padding: 0;
   border-bottom: 1px solid var(--border-color);
   box-sizing: border-box;
   width: 100%;
-  height: $headerHeight;
   
   h1 {
     font-size: pxToRem(32);
     color: var(--primary-color);
-    margin: 0;
-    padding: pxToRem(20);
   }
 
   nav {
