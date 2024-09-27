@@ -1,0 +1,47 @@
+header {
+  background-color: var(--background-color); // Using CSS variable from _colors.scss
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: border-box;
+  width: 100%;
+  height: $headerHeight;
+  
+  h1 {
+    font-size: pxToRem(32);
+    color: var(--primary-color);
+    margin: 0;
+    padding: pxToRem(20);
+  }
+
+  nav {
+    @include flex-end; // Aligning the nav items to the right
+    height: 100%;
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: pxToRem(16); // Space between links
+      margin: 0;
+      padding:0;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      
+      a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: pxToRem(18);
+        padding: pxToRem(8) pxToRem(12);
+        border-radius: pxToRem(4);
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: var(--button-primary-color);
+          color: var(--button-text-color);
+        }
+      }
+    }
+  }
+}
