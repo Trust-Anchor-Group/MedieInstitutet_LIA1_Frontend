@@ -1,0 +1,54 @@
+footer {
+  background-color: var(--background-color); // Using CSS variable from _colors.scss
+  color: var(--font-color); // Using CSS variable from _colors.scss
+  padding: pxToRem(20); // Add padding for spacing
+  border-top: 1px solid var(--border-color); // Add a top border for separation
+  box-sizing: border-box;
+  width: 100%;
+  height: $footerHeight; // Using the variable from _variables.scss
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .center-content {
+        text-align: center;
+        margin-left: 35%;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto; // Push the social media links to the far right
+
+        ul {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            margin: 0 10px;
+            padding: 0;
+            font-size: pxToRem(14); // Adjust font size as needed
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
