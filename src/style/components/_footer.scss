@@ -18,10 +18,8 @@ footer {
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
+      
+     
       .center-content {
         text-align: center;
         margin-left: 40%;
@@ -34,14 +32,10 @@ footer {
 
         ul {
           display: flex;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-
+          
           li {
             margin: 0 10px;
-            padding: 0;
-            font-size: pxToRem(14); // Adjust font size as needed
+            font-size: pxToRem(14); 
           }
         }
       }
