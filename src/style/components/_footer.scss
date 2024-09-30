@@ -1,13 +1,15 @@
 footer {
   background-color: var(--background-color); // Using CSS variable from _colors.scss
   color: var(--font-color); // Using CSS variable from _colors.scss
-  padding: pxToRem(20); // Add padding for spacing
   border-top: 1px solid var(--border-color); // Add a top border for separation
   box-sizing: border-box;
   width: 100%;
-  height: $footerHeight; // Using the variable from _variables.scss
+  height: $footerHeight; // Using the variable from _variables.scss;
+  display: flex;
+  align-items: center;
 
   .footer-content {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,12 +20,6 @@ footer {
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      
-     
-      .center-content {
-        text-align: center;
-        margin-left: 40%;
-      }
 
       .social-media {
         display: flex;
@@ -32,17 +28,13 @@ footer {
 
         ul {
           display: flex;
-          
+
           li {
             margin: 0 10px;
-            font-size: pxToRem(14); 
+            font-size: pxToRem(14);
           }
         }
       }
     }
   }
 }
-
-
-
-
