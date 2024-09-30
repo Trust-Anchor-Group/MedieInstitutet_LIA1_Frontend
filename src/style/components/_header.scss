@@ -1,12 +1,22 @@
 header {
   display: flex;
   flex-direction: column;
-  background-color: var(--background-color); // Using CSS variable from _colors.scss
   padding: 0;
-  border-bottom: 1px solid var(--border-color);
   box-sizing: border-box;
   width: 100%;
-  
+
+  .header__banner {
+    padding: 15px 0;
+
+    .logo {
+      display: inline-block;
+
+      img {
+        max-width: 160px;
+      }
+    }
+  }
+
   h1 {
     font-size: pxToRem(32);
     color: var(--primary-color);
@@ -15,30 +25,40 @@ header {
   nav {
     @include flex-end; // Aligning the nav items to the right
     height: 100%;
+    background-color: var(--navigation-color);
+    border-radius: 7px;
+    padding: 10px;
 
     ul {
       list-style: none;
       display: flex;
       gap: pxToRem(16); // Space between links
       margin: 0;
-      padding:0;
+      padding: 0;
     }
 
     li {
       margin: 0;
       padding: 0;
-      
+
       a {
-        color: var(--secondary-color);
+        color: var(--nav-link-color);
         text-decoration: none;
-        font-size: pxToRem(18);
+        font-size: pxToRem(15);
         padding: pxToRem(8) pxToRem(12);
         border-radius: pxToRem(4);
         transition: background-color 0.3s ease;
+        display: inline-block;
+
+        &.active {
+          background-color: var(--nav-link-bg-hover-color);
+          color: var(--nav-link-hover-color);
+        }
 
         &:hover {
-          background-color: var(--button-primary-color);
-          color: var(--button-text-color);
+          text-decoration: none;
+          background-color: var(--nav-link-bg-hover-color);
+          color: var(--nav-link-hover-color);
         }
       }
     }
