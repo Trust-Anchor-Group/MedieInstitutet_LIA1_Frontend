@@ -26,6 +26,8 @@ header {
     @include flex-end; // Aligning the nav items to the right
     height: 100%;
     background-color: var(--navigation-color);
+    // background-color: #ffffff57;
+    backdrop-filter: saturate(180%) blur(10px);
     border-radius: 7px;
     padding: 10px;
 
