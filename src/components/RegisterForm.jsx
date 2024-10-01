@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import HttpService from '../services/httpService'
+import { Link } from 'react-router-dom';
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ const RegisterForm = () => {
       EMail: '',
       Password: '',
     });
+
+    const [message, setMessage] = useState('');
 
     // Function to handle changes in the input fields of the form.
     const handleChange = (e) => {
@@ -25,6 +28,7 @@ const RegisterForm = () => {
         try{
             const response = await HttpService.registerUser(formData);
             console.log("Registration successful", response);
+            setMessage("Check your email for a verification code");
         } catch(error){
             console.log("Registration failed", error);
         }
@@ -32,39 +36,50 @@ const RegisterForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            name="UserName"
-            type="text"
-            value={formData.UserName}
-            onChange={handleChange}
-            required
-          />
+      <div className="register-container">
+        <h2>Register</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="register-form"
+        >
+          
+          <div className="form-group">
+            <label>Username:</label>
+            <input
+              name="UserName"
+              type="text"
+              value={formData.UserName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              name="EMail"
+              type="email"
+              value={formData.EMail}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              name="Password"
+              type="password"
+              value={formData.Password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className='btn-primary'>Register</button>
+          {message && <p className='success-message'>{message}</p>}
+        </form>
+        <div className='login-link'>
+          <p>Already have an account? <Link to='/login'>Login</Link></p>
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            name="EMail"
-            type="email"
-            value={formData.EMail}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            name="Password"
-            type="password"
-            value={formData.Password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
+      </div>
     </>
   );
 }
