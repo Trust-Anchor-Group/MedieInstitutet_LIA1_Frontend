@@ -3,7 +3,7 @@
 .login-container {
   @include flex-center;
   flex-direction: column;
-  min-height: calc(100%  - #{$headerHeight} - #{$footerHeight});
+    height: 100%;
   padding: pxToRem(20);
 
   h2 {
