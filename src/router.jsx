@@ -3,6 +3,7 @@ import Layout from "./pages/Layout";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
@@ -22,6 +23,10 @@ export const Router = createBrowserRouter([
             {
                 path: "/login", //Path for the login component
                 element: < Login/> //Component to render at the /login path
+            },
+            {
+                path: "/dashboard", // Path for the Dashboard component
+                element: <Dashboard /> // Component to render at the /dashboard path
             }
         ]
     }
