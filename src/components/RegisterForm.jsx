@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import httpService from '../services/httpService'
+import HttpService from '../services/httpService'
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await httpService.registerUser(formData);
+            const response = await HttpService.registerUser(formData);
             console.log("Registration successful", response);
         } catch(error){
             console.log("Registration failed", error);
