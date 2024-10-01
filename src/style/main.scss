@@ -1,30 +1,34 @@
 // src/style/main.scss
 // ! Uncomment imports as the files are added to the project or removed if unused
 
-// 1. abstract/utils imports
+// vendor
+@import './vendor/reset.scss';
+
+// abstract/utils imports
 @import './abstract/functions.scss';
 @import './abstract/variables.scss';
 @import './abstract/mixins.scss';
 @import './abstract/colors.scss';
 @import './abstract/typography.scss';
+@import './abstract/shadows.scss';
 
-// 2. Base imports
-@import './base/reset.scss';
+// Base imports
 @import './base/global.scss';
 
-// 3. Layout imports
+// Layout imports
 // @import 'layout/grid';
 // @import 'layout/containers';
 
-// 4. Components imports
+// Components imports
 // @import 'components/button';
- @import './components/header.scss';
- @import './components/footer.scss';
+@import './components/header.scss';
+@import './components/footer.scss';
+@import './components/banner.scss';
 
-// 5. Page imports
+// Page imports
 // @import 'pages/home';
 // @import 'pages/about';
-
+@import './pages/login.scss';
 
 // 6. Themes imports (if any), preferable if you ask me :)
 // @import 'themes/dark';

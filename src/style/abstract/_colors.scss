@@ -8,12 +8,16 @@ $light-primary-color: #3498db;
 $light-secondary-color: green;
 $light-button-primary-color: #262626;
 $light-button-text-color: #d87946;
-$light-border-color: brown;
+$light-border-color: #d6dbe4;
 $light-card-color: grey;
 $light-font-color: black;
 $light-error-color: #ff6b6b;
 $light-success-color: #51cf66;
 $light-accentuate-color: #f39c12;
+$light-nav-color: rgb(255 255 255 / 55%);
+$light-nav-link-color: #000;
+$light-nav-link-hover-color: #fff;
+$light-nav-link-bg-hover-color: #02255e;
 
 // Dark theme colors - Optional
 // ! Change these colors to match the TAG design colors and add/remove as needed
@@ -28,6 +32,10 @@ $dark-font-color: white;
 $dark-error-color: #ff8787;
 $dark-success-color: #69db7c;
 $dark-accentuate-color: #f39c12;
+$dark-nav-color: #333;
+$dark-nav-link-color: #fff;
+$dark-nav-link-hover-color: #000;
+$dark-nav-link-bg-hover-color: #fff;
 
 // CSS variables defined 
 :root {
@@ -42,6 +50,10 @@ $dark-accentuate-color: #f39c12;
   --error-color: #{$light-error-color};
   --success-color: #{$light-success-color};
   --accentuate-color: #{$light-accentuate-color};
+  --navigation-color: #{$light-nav-color};
+  --nav-link-color: #{$light-nav-link-color};
+  --nav-link-hover-color: #{$light-nav-link-hover-color};
+  --nav-link-bg-hover-color: #{$light-nav-link-bg-hover-color};
 }
 
 [data-theme='dark'] {
@@ -56,4 +68,8 @@ $dark-accentuate-color: #f39c12;
   --error-color: #{$dark-error-color};
   --success-color: #{$dark-success-color};
   --accentuate-color: #{$dark-accentuate-color};
+  --navigation-color: #{$dark-nav-color};
+  --nav-link-color: #{$dark-nav-link-color};
+  --nav-link-hover-color: #{$dark-nav-link-hover-color};
+  --nav-link-bg-hover-color: #{$dark-nav-link-bg-hover-color};
 }
