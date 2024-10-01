@@ -2,13 +2,13 @@
 // _reset.scss
 // ==================================================================================
 /* CSS Reset */
- 
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
- 
+
 html,
 body,
 div,
@@ -97,7 +97,7 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
- 
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -112,21 +112,21 @@ nav,
 section {
     display: block;
 }
- 
+
 body {
     line-height: 1;
 }
- 
+
 ol,
 ul {
     list-style: none;
 }
- 
+
 blockquote,
 q {
     quotes: none;
 }
- 
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -134,15 +134,20 @@ q:after {
     content: "";
     content: none;
 }
- 
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-top: pxToRem(20); 
-     margin-bottom: pxToRem(15);
-     
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+
 
 }
