@@ -1,0 +1,36 @@
+// src/style/pages/_dashboard.scss
+
+.dashboard-container {
+  @include flex-center;
+  flex-direction: column;
+  height: 100%;
+  padding: pxToRem(20);
+  text-align: center;
+
+  h1 {
+    color: var(--primary-color);
+    margin-bottom: pxToRem(20);
+  }
+
+  p {
+    color: var(--font-color);
+    margin-bottom: pxToRem(15);
+    font-size: pxToRem(18);
+  }
+}
+
+.btn-logout {
+  padding: pxToRem(10) pxToRem(20);
+  background-color: var(--button-primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: pxToRem(4);
+  font-size: pxToRem(16);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  @extend .shadow__general;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
