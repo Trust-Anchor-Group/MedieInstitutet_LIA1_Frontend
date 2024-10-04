@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import TokenCreation from "./pages/tokenCreation/TokenCreation";
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
@@ -27,7 +28,11 @@ export const Router = createBrowserRouter([
             {
                 path: "/dashboard", // Path for the Dashboard component
                 element: <Dashboard /> // Component to render at the /dashboard path
-            }
+            },
+            {
+                path: "/create-token", // Path for Token Creation Page
+                element: <TokenCreation /> // Component to render at the /tokenCreation path
+              }
         ]
     }
 ]);
