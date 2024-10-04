@@ -1,6 +1,6 @@
-// src/pages/TokenCreation.jsx
+// src/pages/tokenCreation/TokenCreation.jsx
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import TokenPreview from './tokenPreview';
 
 const TokenCreation = () => {

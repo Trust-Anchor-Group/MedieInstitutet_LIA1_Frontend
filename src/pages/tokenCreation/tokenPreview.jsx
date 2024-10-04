@@ -1,4 +1,4 @@
-// src/components/TokenPreview.jsx
+// src/components/tokenCreation/TokenPreview.jsx
 import React from 'react';
 
 const TokenPreview = ({ formFields, tokenName, tokenDescription }) => {
