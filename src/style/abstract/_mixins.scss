@@ -1,15 +1,25 @@
 // src/style/abstract/_mixins.scss
 
-// This mixin centers content using flexbox, if we remember to use it :)
+// This mixin centers content using flexbox
 // Usage: @include flex-center;
+// Example: Use on a container to center its contents both horizontally and vertically
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+// Flex-container mixin for easy flexbox setup
+// Usage: @include flex-container($direction);
+// Example: Use on a parent element to create a flex container with a specific direction
+@mixin flex-container($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
 // This mixin provides a simple way to create responsive breakpoints
 // Usage: @include responsive(tablet) { ... }
+// Example: Use to apply styles specifically for tablet or mobile screen sizes
 @mixin responsive($breakpoint) {
   @if $breakpoint == tablet {
     @media (max-width: $pageWidthTab) { @content; }
@@ -18,8 +28,37 @@
   }
 }
 
+// This mixin aligns content to the end (right) of a flex container
+// Usage: @include flex-end;
+// Example: Use on a navigation bar to align items to the right
 @mixin flex-end {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+// Button-styles mixin for consistent button styling
+// Usage: @include button-styles($bg-color, $color);
+// Example: Use on button elements to apply a consistent style, with optional custom colors
+@mixin button-styles($bg-color: var(--secondary-color), $color: var(--button-text-color)) {
+  padding: pxToRem(12) pxToRem(20);
+  background-color: $bg-color;
+  color: $color;
+  border: none;
+  border-radius: pxToRem(4);
+  font-size: pxToRem(16);
+  cursor: pointer;
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+// Sticky-element mixin for creating sticky positioned elements
+// Usage: @include sticky-element($top);
+// Example: Use on sidebar or navigation elements that should stick to the top while scrolling
+@mixin sticky-element($top: 0) {
+  position: sticky;
+  top: $top;
 }

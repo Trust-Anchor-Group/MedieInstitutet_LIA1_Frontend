@@ -1,7 +1,7 @@
 // src/pages/tokenCreation/TokenCreation.jsx
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import TokenPreview from './tokenPreview';
+import TokenPreview from './TokenPreview';
 
 const TokenCreation = () => {
   const [formFields, setFormFields] = useState([]);

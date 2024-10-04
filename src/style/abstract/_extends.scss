@@ -1,0 +1,37 @@
+// src/style/abstract/_extends.scss
+
+// Description: Applies full width to an element, ensuring it spans its container
+// Usage: @extend %full-width;
+// Example: Use on container elements that should take up 100% of their parent's width
+%full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+// Description: Applies consistent styling to input elements
+// Usage: @extend %input-styles;
+// Example: Use on text inputs, textareas, and select elements for consistent appearance
+%input-styles {
+  width: 100%;
+  padding: pxToRem(10);
+  border: 1px solid var(--border-color);
+  border-radius: pxToRem(4);
+  font-size: pxToRem(16);
+  color: var(--font-color);
+  background-color: var(--background-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+}
+
+// Description: Applies a card-like appearance to an element
+// Usage: @extend %card-styles;
+// Example: Use on containers that should have a distinct, elevated appearance
+%card-styles {
+  background-color: var(--card-color);
+  padding: pxToRem(15);
+  border-radius: pxToRem(4);
+  @extend .shadow__general;
+}
