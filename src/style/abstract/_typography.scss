@@ -9,7 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+%heading-styles {
+  color: var(--primary-color);
+  margin-bottom: $standard-gap;
+}
+
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  @extend %heading-styles;
+  font-size: pxToRem(32);
+}
+
+h2 {
+  @extend %heading-styles;
+  font-size: pxToRem(24);
 }

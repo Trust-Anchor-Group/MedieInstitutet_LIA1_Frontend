@@ -8,3 +8,13 @@ $pageWidthMob: pxToRem(400);
 // Spacing units
 $headerHeight: pxToRem(80);
 $footerHeight: pxToRem(80);
+
+// Layout
+$section-max-width: 50%;
+$standard-gap: pxToRem(20);
+$standard-padding: pxToRem(20);
+
+// Form elements
+$input-padding: pxToRem(10);
+$input-font-size: pxToRem(16);
+$textarea-height: pxToRem(100);

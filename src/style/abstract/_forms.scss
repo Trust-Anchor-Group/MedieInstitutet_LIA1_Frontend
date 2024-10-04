@@ -51,5 +51,24 @@ form {
         }
 
     }
+}
+// src/style/abstract/_forms.scss
 
+%form-field {
+  @extend %input-styles;
+  margin-bottom: $input-padding;
+}
+
+%textarea-field {
+  @extend %form-field;
+  height: $textarea-height;
+  resize: vertical;
+}
+
+%button-base {
+  @include button-styles;
+}
+
+%error-button {
+  @include button-styles(var(--error-color), white);
 }
