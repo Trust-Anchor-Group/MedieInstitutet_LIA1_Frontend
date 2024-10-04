@@ -12,7 +12,7 @@ const Header = () => {
         </a>
       </div>
 
-      <nav className="shadow__general">
+      <nav className="shadow__general"> 
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
@@ -22,6 +22,9 @@ const Header = () => {
           </li>
           <li>
             <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/create-token">Token Creation</NavLink>
           </li>
         </ul>
       </nav>

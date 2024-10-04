@@ -1,0 +1,79 @@
+// src/style/components/_tokenPreview.scss
+
+// ! Needs colors fixed. The colors are not the same as the design.
+
+.token-preview {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: pxToRem(12);
+  overflow: hidden;
+  box-shadow: 0 pxToRem(10) pxToRem(20) rgba(0, 0, 0, 0.1);
+
+  &__header {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    padding: pxToRem(20);
+    color: white;
+
+    h2 {
+      margin: 0;
+      font-size: pxToRem(24);
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    padding: pxToRem(20);
+
+    h3 {
+      color: #333;
+      font-size: pxToRem(20);
+      margin-bottom: pxToRem(10);
+    }
+
+    p {
+      color: #666;
+      margin-bottom: pxToRem(20);
+    }
+  }
+
+  .preview-field {
+    margin-bottom: pxToRem(15);
+
+    label {
+      display: block;
+      margin-bottom: pxToRem(5);
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, select {
+      width: 100%;
+      padding: pxToRem(10);
+      border: 1px solid #ddd;
+      border-radius: pxToRem(4);
+      font-size: pxToRem(14);
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: #4facfe;
+        outline: none;
+      }
+    }
+  }
+
+  .preview-submit {
+    width: 100%;
+    padding: pxToRem(12);
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    border-radius: pxToRem(4);
+    font-size: pxToRem(16);
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
