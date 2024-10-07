@@ -29,6 +29,7 @@ const RegisterForm = () => {
             const response = await HttpService.registerUser(formData);
             console.log("Registration successful", response);
             setMessage("Check your email for a verification code");
+            localStorage.setItem('email,', formData.EMail);
         } catch(error){
             console.log("Registration failed", error);
         }
