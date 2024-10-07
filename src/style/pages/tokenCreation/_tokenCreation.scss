@@ -31,7 +31,7 @@
       margin-bottom: $gap-large;
 
       input, textarea {
-        @extend %form-field;
+        @extend %input-styles;
       }
 
       textarea {
@@ -58,10 +58,10 @@
         flex-wrap: wrap;
         align-items: center;
         gap: $gap-small;
-        margin-bottom: $gap-small;
+        margin-bottom: $gap-xsmall;
 
         input, select {
-          @extend %form-field;
+          @extend %input-styles;
           padding: $input-padding;
           font-size: $input-font-size * 0.875;
         }
@@ -69,7 +69,7 @@
         label {
           display: flex;
           align-items: center;
-          gap: $gap-small;
+          gap: $gap-xsmall;
         }
 
         button {

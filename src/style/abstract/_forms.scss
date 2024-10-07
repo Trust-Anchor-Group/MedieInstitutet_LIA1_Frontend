@@ -54,13 +54,8 @@ form {
 }
 // src/style/abstract/_forms.scss
 
-%form-field {
-  @extend %input-styles;
-  margin-bottom: $input-padding;
-}
-
 %textarea-field {
-  @extend %form-field;
+  @extend %input-styles;
   height: $textarea-height;
   resize: vertical;
 }
