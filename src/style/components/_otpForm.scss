@@ -1,0 +1,32 @@
+form.otp-form {
+    max-width: 400px;
+    padding: 40px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 7px;
+    border: 1px solid var(--border-color);
+
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .otp-field {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 7px;
+
+        input {
+            width: 100%;
+            height: 60px;
+            padding: 0;
+            text-align: center;
+            font-size: pxToRem(30);
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            caret-color: transparent; // Makes the cursor transparent
+        }
+    }
+}

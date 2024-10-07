@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import { Verify } from './pages/Verify';
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
@@ -21,8 +22,12 @@ export const Router = createBrowserRouter([
                 element: <Register/> //Component to render at the /register path
             },
             {
+                path: '/verify', //Path for the Verify component
+                element: <Verify />, //Component to render at the /verify path
+            },
+            {
                 path: "/login", //Path for the login component
-                element: < Login/> //Component to render at the /login path
+                element: <Login/> //Component to render at the /login path
             },
             {
                 path: "/dashboard", // Path for the Dashboard component
