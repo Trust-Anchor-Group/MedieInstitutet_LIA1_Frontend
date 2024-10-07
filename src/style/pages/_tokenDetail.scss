@@ -1,0 +1,42 @@
+.tokenList {
+    display: flex;
+    flex-direction: row;
+
+.tokenContainer {
+   @include flex-center; 
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: pxToRem(10);
+    padding: pxToRem(20);
+    background-color: var(--background-color);
+
+    
+
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: pxToRem(20);
+        font-size: larger;
+        cursor: pointer;
+    }
+
+    p{
+        color: var(--text-color);
+        margin-bottom: pxToRem(20);
+        font-size: medium;
+    }
+
+    img {
+        
+        width: pxToRem(120);
+        height: pxToRem(120);
+        margin-bottom: pxToRem(20);
+        border-radius: pxToRem(10);
+
+    }
+    
+
+}
+
+}
+
+ 

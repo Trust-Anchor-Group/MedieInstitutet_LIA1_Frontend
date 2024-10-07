@@ -1,0 +1,40 @@
+[
+  {
+  "tokenId": "0x1234567890",
+  "name": "Digital Artwork Token",
+  "symbol": "DAT",
+  "price": "10000",
+  "listedForSale": "10",
+  "currency": "SEK",
+  "totalSupply": "20",
+  "remainingSupply": "10",
+  "currentHighestBid": "0",
+  "image": "./public/assets/images/digitalartwork.webp"
+},
+
+ {
+  "tokenId": "0x1234562344",
+  "name": "Bones Token",
+  "symbol": "BT",
+  "price": "10",
+  "listedForSale": "100",
+  "currency": "SEK",
+  "totalSupply": "200",
+  "remainingSupply": "100",
+  "currentHighestBid": "0",
+  "image": "./public/assets/images/digitalartwork.webp"
+ },
+
+ {
+   "tokenId": "0x123456235444",
+   "name": "Tree Token",
+   "symbol": "TT",
+   "price": "10",
+   "listedForSale": "100",
+   "currency": "SEK",
+   "totalSupply": "200",
+   "remainingSupply": "100",
+   "currentHighestBid": "0",
+   "image": "./public/assets/images/digitalartwork.webp"
+ }
+]
