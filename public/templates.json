@@ -1,0 +1,246 @@
+[
+  {
+    "id": 1,
+    "name": "Basic Token",
+    "description": "A simple token with essential fields.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Token Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Total Supply",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Description",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Advanced Token",
+    "description": "A token with additional customization options.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Token Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Total Supply",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Decimals",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Description",
+        "required": false
+      },
+      {
+        "type": "date",
+        "label": "Launch Date",
+        "required": false
+      },
+      {
+        "type": "dropdown",
+        "label": "Token Type",
+        "required": true,
+        "options": ["ERC20", "ERC721", "ERC1155"]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Governance Token",
+    "description": "A token designed for community governance.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Token Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Total Supply",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Voting Power Per Token",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Governance Description",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Voting Mechanism",
+        "required": true,
+        "options": ["Single Choice", "Multiple Choice", "Quadratic Voting"]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Auction Platform",
+    "description": "A token system for managing auctions and bids.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Platform Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Initial Token Supply",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Auction Type",
+        "required": true,
+        "options": ["English", "Dutch", "Sealed-bid", "Vickrey"]
+      },
+      {
+        "type": "number",
+        "label": "Minimum Bid Increment (%)",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Auction Duration (hours)",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Platform Description",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Memberships",
+    "description": "A token-based membership system for exclusive access and benefits.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Membership Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Total Memberships Available",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Membership Tiers",
+        "required": true,
+        "options": ["Single Tier", "Multiple Tiers"]
+      },
+      {
+        "type": "number",
+        "label": "Membership Duration (days)",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Benefits Description",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Renewal Options",
+        "required": true,
+        "options": ["Auto-renew", "Manual Renewal", "One-time"]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "My Big Book Collection",
+    "description": "A token system for managing and trading book collections.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Token Symbol",
+        "required": true
+      },
+      {
+        "type": "number",
+        "label": "Total Books in Collection",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Genre",
+        "required": true,
+        "options": ["Fiction", "Non-fiction", "Mixed"]
+      },
+      {
+        "type": "text",
+        "label": "Author(s)",
+        "required": true
+      },
+      {
+        "type": "date",
+        "label": "Collection Start Date",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Collection Description",
+        "required": false
+      },
+      {
+        "type": "dropdown",
+        "label": "Rarity Levels",
+        "required": true,
+        "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
+    ]
+  }
+]

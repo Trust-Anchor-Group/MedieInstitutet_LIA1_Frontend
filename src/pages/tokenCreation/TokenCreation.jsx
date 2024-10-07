@@ -2,11 +2,18 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import TokenPreview from './TokenPreview';
+import TemplateBanner from './TemplateBanner';
 
 const TokenCreation = () => {
   const [formFields, setFormFields] = useState([]);
   const [tokenName, setTokenName] = useState('');
   const [tokenDescription, setTokenDescription] = useState('');
+
+  const handleSelectTemplate = (template) => {
+    setTokenName(template.name);
+    setTokenDescription(template.description || '');
+    setFormFields(template.fields);
+  };
 
   // Function to add a new field to the form
   const addField = (type) => {
@@ -62,7 +69,9 @@ const TokenCreation = () => {
   };
 
   return (
-    <div className="token-creation">
+    <div className="token-creation-page">
+    <TemplateBanner onSelectTemplate={handleSelectTemplate} />
+    <div className="token-creation-content">
       <div className="token-creation__form">
         <h1>Create Your Token</h1>
         <div className="token-basics">
@@ -144,16 +153,17 @@ const TokenCreation = () => {
         <div className="preview-controls">
           <button onClick={saveForm} className="save-button">Save Token Form</button>
         </div>
-      </div>
-      {formFields.length > 0 && (
-        <div className="token-creation__preview">
-          <TokenPreview 
-            formFields={formFields}
-            tokenName={tokenName}
-            tokenDescription={tokenDescription}
-          />
         </div>
-      )}
+        {formFields.length > 0 && (
+          <div className="token-creation__preview">
+            <TokenPreview 
+              formFields={formFields}
+              tokenName={tokenName}
+              tokenDescription={tokenDescription}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
