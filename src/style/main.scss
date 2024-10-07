@@ -12,6 +12,7 @@
 @import './abstract/typography.scss';
 @import './abstract/shadows.scss';
 @import './abstract/extends.scss';
+@import './abstract/forms.scss';
 
 // Base imports
 @import './base/global.scss';
@@ -34,6 +35,8 @@
 @import './pages/dashboard.scss';
 @import './pages/tokenCreation/tokenCreation.scss';
 @import './pages/tokenCreation/tokenPreview.scss';
+@import './pages/tokenCreation/templateBanner.scss';
+@import './pages/tokenCreation/templateModal.scss';
 
 // 6. Themes imports (if any), preferable if you ask me :)
 // @import 'themes/dark';

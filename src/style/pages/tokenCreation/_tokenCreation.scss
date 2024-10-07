@@ -1,103 +1,114 @@
 // src/style/pages/tokenCreation/_tokenCreation.scss
 
-.token-creation {
-  @include flex-container(row);
+.token-creation-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.token-creation-content {
+  display: flex;
+  flex-direction: row;
   gap: $standard-gap;
   padding: $standard-padding;
 
-  &__form,
-  &__preview {
+  .token-creation__form,
+  .token-creation__preview {
     flex: 1;
-    max-width: $section-max-width;
+    max-width: calc(50% - #{$standard-gap} / 2);
   }
 
-  &__preview {
+  .token-creation__preview {
     @include sticky-element($standard-padding);
     align-self: flex-start;
     max-height: calc(100vh - #{2 * $standard-padding});
     overflow-y: auto;
   }
 
-  .token-basics {
-    @extend %full-width;
-    margin-bottom: $gap-large;
+  .token-creation__form {
+    .token-basics {
+      @extend %full-width;
+      margin-bottom: $gap-large;
 
-    input, textarea {
-      @extend %form-field;
+      input, textarea {
+        @extend %form-field;
+      }
+
+      textarea {
+        @extend %textarea-field;
+      }
     }
 
-    textarea {
-      @extend %textarea-field;
+    .form-builder {
+      @extend %full-width;
+
+      .field-buttons {
+        @include flex-container;
+        justify-content: space-between;
+        margin-bottom: $standard-gap;
+
+        button {
+          @extend %button-base;
+        }
+      }
+
+      .form-field {
+        @extend %card-styles;
+        @include flex-container;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $gap-small;
+        margin-bottom: $gap-small;
+
+        input, select {
+          @extend %form-field;
+          padding: $input-padding;
+          font-size: $input-font-size * 0.875;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: $gap-small;
+        }
+
+        button {
+          @extend %error-button;
+        }
+      }
     }
-  }
 
-  .form-builder {
-    @extend %full-width;
-
-    .field-buttons {
+    .preview-controls {
+      @extend %full-width;
       @include flex-container;
       justify-content: space-between;
-      margin-bottom: $standard-gap;
+      margin-top: $standard-gap;
 
       button {
         @extend %button-base;
-      }
-    }
 
-    .form-field {
-      @extend %card-styles;
-      @include flex-container;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: $gap-small;
-      margin-bottom: $gap-small;
+        &.preview-button {
+          background-color: var(--secondary-color);
+        }
 
-      input, select {
-        @extend %form-field;
-        padding: $input-padding / 2;
-        font-size: $input-font-size * 0.875;
-      }
-
-      label {
-        display: flex;
-        align-items: center;
-        gap: $gap-small / 2;
-      }
-
-      button {
-        @extend %error-button;
+        &.save-button {
+          background-color: var(--button-primary-color);
+        }
       }
     }
   }
+}
 
-  .preview-controls {
-    @extend %full-width;
-    @include flex-container;
-    justify-content: space-between;
-    margin-top: $standard-gap;
-
-    button {
-      @extend %button-base;
-
-      &.preview-button {
-        background-color: var(--secondary-color);
-      }
-
-      &.save-button {
-        background-color: var(--button-primary-color);
-      }
-    }
-  }
-
-  @include responsive(tablet) {
+@include responsive(tablet) {
+  .token-creation-content {
     flex-direction: column;
 
-    &__form,
-    &__preview {
+    .token-creation__form,
+    .token-creation__preview {
       max-width: 100%;
     }
 
-    &__preview {
+    .token-creation__preview {
       position: static;
       max-height: none;
     }
@@ -105,23 +116,25 @@
 }
 
 @include responsive(mobile) {
-  .token-creation {
-    .preview-controls {
-      flex-direction: column;
-      gap: $gap-small;
-
-      button {
-        width: 100%;
-      }
-    }
-    
-    .form-builder {
-      .field-buttons {
-        flex-wrap: wrap;
+  .token-creation-content {
+    .token-creation__form {
+      .preview-controls {
+        flex-direction: column;
         gap: $gap-small;
 
         button {
-          flex: 1 1 calc(50% - #{$gap-small / 2});
+          width: 100%;
+        }
+      }
+
+      .form-builder {
+        .field-buttons {
+          flex-wrap: wrap;
+          gap: $gap-small;
+
+          button {
+            flex: 1 1 calc(50% - #{$gap-small});
+          }
         }
       }
     }

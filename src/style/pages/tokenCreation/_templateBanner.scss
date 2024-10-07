@@ -1,0 +1,60 @@
+// src/style/pages/tokenCreation/_templateBanner.scss
+.template-banner {
+  width: 100%;
+  height: $headerHeight;
+  background-color: var(--card-color);
+  transition: height 0.3s ease-out;
+  overflow: hidden;
+
+  &.expanded {
+    height: auto;
+    padding-bottom: $standard-gap;
+  }
+
+  &__toggle {
+    @extend %button-base;
+    width: 100%;
+    height: $headerHeight;
+    font-size: pxToRem(18);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .template-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $standard-gap;
+    padding: $standard-gap;
+    justify-content: center;
+  }
+
+  .template-thumbnail {
+    width: pxToRem(120);
+    height: pxToRem(120);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: pxToRem(8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &__title {
+      font-size: pxToRem(14);
+      font-weight: bold;
+      text-align: center;
+      padding: pxToRem(8);
+    }
+  }
+}
