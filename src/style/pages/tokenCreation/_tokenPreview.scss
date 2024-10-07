@@ -37,7 +37,7 @@
     }
 
     input, select {
-      @extend %form-field;
+      @extend %input-styles;
     }
   }
 
