@@ -11,6 +11,8 @@
 @import './abstract/colors.scss';
 @import './abstract/typography.scss';
 @import './abstract/shadows.scss';
+@import './abstract/forms.scss';
+
 
 // Base imports
 @import './base/global.scss';
@@ -24,6 +26,7 @@
 @import './components/header.scss';
 @import './components/footer.scss';
 @import './components/banner.scss';
+@import './components/otpForm.scss';
 
 // Page imports
 // @import 'pages/home';

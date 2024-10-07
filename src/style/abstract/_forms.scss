@@ -1,0 +1,55 @@
+form {
+
+    label {
+        >span:first-child {
+            font-size: pxToRem(13);
+        }
+    }
+
+    input[type="text"],
+    input[type="submit"],
+    input[type="email"] {
+        height: 50px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        padding: 0 15px;
+        font-size: pxToRem(15);
+    }
+
+    input[type="text"]:disabled {
+        background-color: #f1f5f7;
+    }
+
+    input[type="submit"],
+    button {
+        cursor: pointer;
+        height: 60px;
+    }
+
+    .form {
+
+        &__header {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        &__icon-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: var(--status-pending-color);
+
+            svg {
+                height: 30px;
+                width: 30px;
+            }
+        }
+
+    }
+
+}
