@@ -1,7 +1,7 @@
 // src/style/components/tokenCreation/_tokenPreview.scss
 
 .token-preview {
-  @extend %card-styles;
+  @include card-styles;
   margin-top: $gap-large;
   width: 100%;
   max-width: pxToRem(600);
@@ -22,12 +22,12 @@
   }
 
   p {
-    margin-bottom: $standard-gap;
+    margin-bottom: $gap-medium;
     color: var(--font-color);
   }
 
   .preview-field {
-    margin-bottom: $standard-gap;
+    margin-bottom: $gap-medium;
 
     label {
       display: block;
@@ -37,12 +37,12 @@
     }
 
     input, select {
-      @extend %input-styles;
+      @include input-styles;
     }
   }
 
   .preview-submit {
-    @extend %button-base;
+    @include button-styles;
     width: 100%;
     font-weight: bold;
     background-color: var(--button-primary-color);

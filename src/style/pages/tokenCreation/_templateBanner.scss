@@ -5,14 +5,16 @@
   background-color: var(--card-color);
   transition: height 0.3s ease-out;
   overflow: hidden;
+  margin-top: $gap-medium;
+  border-radius: $border-radius;
 
   &.expanded {
     height: auto;
-    padding-bottom: $standard-gap;
+    padding-bottom: $gap-medium;
   }
 
   &__toggle {
-    @extend %button-base;
+    @include button-styles;
     width: 100%;
     height: $headerHeight;
     font-size: pxToRem(18);
@@ -28,8 +30,8 @@
   .template-thumbnails {
     display: flex;
     flex-wrap: wrap;
-    gap: $standard-gap;
-    padding: $standard-gap;
+    gap: $gap-medium;
+    padding: $gap-medium;
     justify-content: center;
   }
 
