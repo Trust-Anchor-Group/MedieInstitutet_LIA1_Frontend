@@ -20,26 +20,26 @@
   }
 
   &__content {
-    @extend %card-styles;
+    @include card-styles;
     width: 90%;
     max-width: pxToRem(600);
     max-height: 80vh;
     overflow-y: auto;
     z-index: 1001;
-    padding: $standard-gap;
+    padding: $gap-medium;
 
     h2 {
       font-size: pxToRem(24);
-      margin-bottom: $standard-gap;
+      margin-bottom: $gap-medium;
     }
 
     p {
-      margin-bottom: $standard-gap;
+      margin-bottom: $gap-medium;
     }
   }
 
   .template-preview {
-    margin-bottom: $standard-gap;
+    margin-bottom: $gap-medium;
 
     h3 {
       font-size: pxToRem(18);
@@ -58,7 +58,7 @@
     gap: $gap-small;
 
     button {
-      @extend %button-base;
+      @include button-styles;
     }
   }
 }

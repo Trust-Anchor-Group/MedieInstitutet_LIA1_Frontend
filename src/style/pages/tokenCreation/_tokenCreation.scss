@@ -9,51 +9,51 @@
 .token-creation-content {
   display: flex;
   flex-direction: row;
-  gap: $standard-gap;
+  gap: $gap-medium;
   padding: $standard-padding;
 
   .token-creation__form,
   .token-creation__preview {
     flex: 1;
-    max-width: calc(50% - #{$standard-gap} / 2);
+    max-width: calc(50% - #{$gap-medium} / 2);
   }
 
   .token-creation__preview {
-    @include sticky-element($standard-padding);
+    @include sticky-element($gap-medium);
     align-self: flex-start;
-    max-height: calc(100vh - #{2 * $standard-padding});
+    max-height: calc(100vh - #{2 * $gap-medium});
     overflow-y: auto;
   }
 
   .token-creation__form {
     .token-basics {
-      @extend %full-width;
+      @include full-width;
       margin-bottom: $gap-large;
 
       input, textarea {
-        @extend %input-styles;
+        @include input-styles;
       }
 
       textarea {
-        @extend %textarea-field;
+        @include textarea-field;
       }
     }
 
     .form-builder {
-      @extend %full-width;
+      @include full-width;
 
       .field-buttons {
         @include flex-container;
         justify-content: space-between;
-        margin-bottom: $standard-gap;
+        margin-bottom: $gap-medium;
 
         button {
-          @extend %button-base;
+          @include button-styles;
         }
       }
 
       .form-field {
-        @extend %card-styles;
+        @include card-styles;
         @include flex-container;
         flex-wrap: wrap;
         align-items: center;
@@ -61,7 +61,7 @@
         margin-bottom: $gap-xsmall;
 
         input, select {
-          @extend %input-styles;
+          @include input-styles;
           padding: $input-padding;
           font-size: $input-font-size * 0.875;
         }
@@ -79,13 +79,13 @@
     }
 
     .preview-controls {
-      @extend %full-width;
+      @include full-width;
       @include flex-container;
       justify-content: space-between;
-      margin-top: $standard-gap;
+      margin-top: $gap-medium;
 
       button {
-        @extend %button-base;
+        @include button-styles;
 
         &.preview-button {
           background-color: var(--secondary-color);
