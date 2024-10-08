@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import TokenPreview from './TokenPreview';
 import TemplateBanner from './TemplateBanner';
 import { useFormFields } from '../../hooks/useFormFields';
+import FormField from '../../components/FormField';
 
 const TokenCreation = () => {
   const { formFields, setFormFields, addField, updateField, removeField, reorderFields } = useFormFields();
@@ -72,40 +73,12 @@ const TokenCreation = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className="form-field"
                           >
-                            <input
-                              type="text"
-                              placeholder="Field Label"
-                              value={field.label}
-                              onChange={(e) => updateField(field.id, { label: e.target.value })}
+                            <FormField
+                              field={field}
+                              updateField={updateField}
+                              removeField={removeField}
                             />
-                            <select
-                              value={field.type}
-                              onChange={(e) => updateField(field.id, { type: e.target.value })}
-                            >
-                              <option value="text">Text</option>
-                              <option value="number">Number</option>
-                              <option value="date">Date</option>
-                              <option value="dropdown">Dropdown</option>
-                            </select>
-                            <label>
-                              <input
-                                type="checkbox"
-                                checked={field.required}
-                                onChange={(e) => updateField(field.id, { required: e.target.checked })}
-                              />
-                              Required
-                            </label>
-                            {field.type === 'dropdown' && (
-                              <input
-                                type="text"
-                                placeholder="Options (comma-separated)"
-                                value={field.options ? field.options.join(',') : ''}
-                                onChange={(e) => updateField(field.id, { options: e.target.value.split(',') })}
-                              />
-                            )}
-                            <button onClick={() => removeField(field.id)}>Remove</button>
                           </div>
                         )}
                       </Draggable>
