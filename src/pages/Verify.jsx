@@ -3,9 +3,8 @@ import { OtpForm } from '../components/OtpForm';
 
 export const Verify = () => {
   return (
-    <>
-      <div>Verify</div>
+    <div className="page__form-container">
       <OtpForm />
-    </>
+    </div>
   );
 };
