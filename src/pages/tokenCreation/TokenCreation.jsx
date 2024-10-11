@@ -14,7 +14,11 @@ const TokenCreation = () => {
   const handleSelectTemplate = (template) => {
     setTokenName(template.name);
     setTokenDescription(template.description || '');
-    setFormFields(template.fields);
+    const fieldsWithIds = template.fields.map(field => ({
+      ...field,
+      id: field.id || `field-${Date.now()}-${Math.random()}`
+    }));
+    setFormFields(fieldsWithIds);
   };
 
   // Function to save the form

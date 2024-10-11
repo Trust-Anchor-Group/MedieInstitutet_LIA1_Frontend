@@ -15,11 +15,11 @@ export const useFormFields = (initialFields = []) => {
   const addField = (type) => {
     // Create a new field object with a unique id based on the current time
     const newField = {
-      id: `field-${Date.now()}`,
+      id: `field-${Date.now()}-${Math.random()}`,
       type,
       label: '',
       required: false,
-      // Only create options array for dropdown type
+    // Only create options array for dropdown type
       options: type === 'dropdown' ? [] : undefined,
     };
     // Add the new field to the state, creating a new array reference
