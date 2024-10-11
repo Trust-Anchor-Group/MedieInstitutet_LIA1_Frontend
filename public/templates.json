@@ -242,5 +242,77 @@
         "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
       }
     ]
+  },
+  {
+    "id": 7,
+    "name": "Place Holder 1",
+    "description": "For testing styling.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Rarity Levels",
+        "required": true,
+        "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Place Holder 2",
+    "description": "For testing styling.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Rarity Levels",
+        "required": true,
+        "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Place Holder 3",
+    "description": "For testing styling.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Rarity Levels",
+        "required": true,
+        "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Place Holder 4",
+    "description": "For testing styling.",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Rarity Levels",
+        "required": true,
+        "options": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
+    ]
   }
 ]
