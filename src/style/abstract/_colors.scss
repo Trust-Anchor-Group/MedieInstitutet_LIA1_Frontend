@@ -18,6 +18,10 @@ $light-nav-color: rgb(255 255 255 / 55%);
 $light-nav-link-color: #000;
 $light-nav-link-hover-color: #fff;
 $light-nav-link-bg-hover-color: #02255e;
+$light-status-success-color: #d1e7de;
+$light-status-error-color: #f9d7db;
+$light-status-warning-color: #fff3cd;
+$light-status-pending-color: #cff4fc;
 
 // Dark theme colors - Optional
 // ! Change these colors to match the TAG design colors and add/remove as needed
@@ -36,6 +40,10 @@ $dark-nav-color: #333;
 $dark-nav-link-color: #fff;
 $dark-nav-link-hover-color: #000;
 $dark-nav-link-bg-hover-color: #fff;
+$dark-status-success-color: #d1e7de;
+$dark-status-error-color: #f9d7db;
+$dark-status-warning-color: #fff3cd;
+$dark-status-pending-color: #d0e2ff;
 
 // CSS variables defined 
 :root {
@@ -50,10 +58,18 @@ $dark-nav-link-bg-hover-color: #fff;
   --error-color: #{$light-error-color};
   --success-color: #{$light-success-color};
   --accentuate-color: #{$light-accentuate-color};
+
+  // Navigation
   --navigation-color: #{$light-nav-color};
   --nav-link-color: #{$light-nav-link-color};
   --nav-link-hover-color: #{$light-nav-link-hover-color};
   --nav-link-bg-hover-color: #{$light-nav-link-bg-hover-color};
+
+  // Status colors
+  --status-success-color: #{$light-status-success-color};
+  --status-error-color: #{$light-status-error-color};
+  --status-warning-color: #{$light-status-warning-color};
+  --status-pending-color: #{$light-status-pending-color};
 }
 
 [data-theme='dark'] {
@@ -71,5 +87,5 @@ $dark-nav-link-bg-hover-color: #fff;
   --navigation-color: #{$dark-nav-color};
   --nav-link-color: #{$dark-nav-link-color};
   --nav-link-hover-color: #{$dark-nav-link-hover-color};
-  --nav-link-bg-hover-color: #{$dark-nav-link-bg-hover-color};
+  --nav-link-bg-hover-color: #{$light-status-pending-color};
 }
