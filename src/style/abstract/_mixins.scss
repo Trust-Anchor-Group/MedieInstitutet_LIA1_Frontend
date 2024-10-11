@@ -40,8 +40,8 @@
 // Button-styles mixin for consistent button styling
 // Usage: @include button-styles($bg-color, $color);
 // Example: Use on button elements to apply a consistent style, with optional custom colors
-@mixin button-styles($bg-color: var(--secondary-color), $color: var(--button-text-color)) {
-  padding: pxToRem(12) pxToRem(20);
+@mixin button-styles($bg-color: var(--button-primary-color), $color: var(--button-text-color)) {
+  padding: pxToRem(8) pxToRem(12);
   background-color: $bg-color;
   color: $color;
   border: none;
@@ -49,6 +49,7 @@
   font-size: pxToRem(16);
   cursor: pointer;
   transition: filter 0.3s ease;
+  margin: pxToRem(5);
 
   &:hover {
     filter: brightness(0.9);
@@ -130,4 +131,10 @@
 // Example: Ideal for buttons that indicate errors or cancel actions
 %error-button {
   @include button-styles(var(--error-color), white);
+}
+
+%main-button {
+  @include button-styles;
+  font-weight: bold;
+  padding: pxToRem(10) pxToRem(20);
 }

@@ -81,7 +81,7 @@
     .preview-controls {
       @include full-width;
       @include flex-container;
-      justify-content: space-between;
+      justify-content: center;
       margin-top: $gap-medium;
 
       button {
@@ -92,7 +92,8 @@
         }
 
         &.save-button {
-          background-color: var(--button-primary-color);
+          @extend %main-button;
+          background-color: var(--button-primary-color);;
         }
       }
     }
