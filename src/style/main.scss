@@ -26,12 +26,14 @@
 @import './components/banner.scss';
 @import './components/register.scss';
 
+
 // Page imports
 // @import 'pages/home';
 // @import 'pages/about';
 @import './pages/login.scss';
 @import './pages/dashboard.scss';
 @import './pages/tokenDetail.scss';
+@import './components/manageToken.scss';
 
 // 6. Themes imports (if any), preferable if you ask me :)
 // @import 'themes/dark';

@@ -6,8 +6,8 @@
   "price": "10000",
   "listedForSale": "10",
   "currency": "SEK",
-  "totalSupply": "20",
-  "remainingSupply": "10",
+  "quantity": "20",
+  "remainingQuanity": "10",
   "currentHighestBid": "0",
   "image": "./public/assets/images/digitalartwork.webp"
 },
@@ -19,8 +19,8 @@
   "price": "10",
   "listedForSale": "100",
   "currency": "SEK",
-  "totalSupply": "200",
-  "remainingSupply": "100",
+  "quantity": "200",
+  "remainingQuanity": "100",
   "currentHighestBid": "0",
   "image": "./public/assets/images/digitalartwork.webp"
  },
@@ -32,8 +32,8 @@
    "price": "10",
    "listedForSale": "100",
    "currency": "SEK",
-   "totalSupply": "200",
-   "remainingSupply": "100",
+   "quantity": "200",
+   "remainingQuanity": "100",
    "currentHighestBid": "0",
    "image": "./public/assets/images/digitalartwork.webp"
  }
