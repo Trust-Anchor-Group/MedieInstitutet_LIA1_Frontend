@@ -1,0 +1,47 @@
+// src/style/components/tokenCreation/_tokenPreview.scss
+
+.token-preview {
+  @include card-styles;
+  margin-top: $gap-large;
+  width: 100%;
+  max-width: pxToRem(600);
+  overflow: hidden;
+
+  h2 {
+    color: var(--button-text-color);
+  }
+
+  &__header {
+    background: linear-gradient(to right, var(--button-text-color) 0%, var(--secondary-color) 100%);
+    padding: $standard-padding;
+  }
+
+  &__content {
+    padding: $standard-padding;
+  }
+
+  p {
+    margin-bottom: $gap-medium;
+    color: var(--font-color);
+  }
+
+  .preview-field {
+    margin-bottom: $gap-medium;
+
+    label {
+      display: block;
+      margin-bottom: $gap-small;
+      font-weight: bold;
+      color: var(--font-color);
+    }
+
+    input, select {
+      @include input-styles;
+    }
+  }
+
+  .preview-submit {
+    @extend %main-button;
+    width: 100%;
+  }
+}

@@ -1,15 +1,25 @@
 // src/style/abstract/_mixins.scss
 
-// This mixin centers content using flexbox, if we remember to use it :)
+// This mixin centers content using flexbox
 // Usage: @include flex-center;
+// Example: Use on a container to center its contents both horizontally and vertically
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+// Flex-container mixin for easy flexbox setup
+// Usage: @include flex-container($direction);
+// Example: Use on a parent element to create a flex container with a specific direction
+@mixin flex-container($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
 // This mixin provides a simple way to create responsive breakpoints
 // Usage: @include responsive(tablet) { ... }
+// Example: Use to apply styles specifically for tablet or mobile screen sizes
 @mixin responsive($breakpoint) {
   @if $breakpoint == tablet {
     @media (max-width: $pageWidthTab) { @content; }
@@ -18,8 +28,113 @@
   }
 }
 
+// This mixin aligns content to the end (right) of a flex container
+// Usage: @include flex-end;
+// Example: Use on a navigation bar to align items to the right
 @mixin flex-end {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+// Button-styles mixin for consistent button styling
+// Usage: @include button-styles($bg-color, $color);
+// Example: Use on button elements to apply a consistent style, with optional custom colors
+@mixin button-styles($bg-color: var(--button-primary-color), $color: var(--button-text-color)) {
+  padding: pxToRem(8) pxToRem(12);
+  background-color: $bg-color;
+  color: $color;
+  border: none;
+  border-radius: pxToRem(4);
+  font-size: pxToRem(16);
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  margin: pxToRem(5);
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+// Sticky-element mixin for creating sticky positioned elements
+// Usage: @include sticky-element($top);
+// Example: Use on sidebar or navigation elements that should stick to the top while scrolling
+@mixin sticky-element($top: 0) {
+  position: sticky;
+  top: $top;
+}
+
+// Description: Ensures an element takes up the full available width
+// Usage: @include full-width;
+// Example: Useful for containers or content blocks that should span their parent's width
+@mixin full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+// Description: Applies consistent styling to input elements
+// Usage: @include input-styles;
+// Example: Use on text inputs, textareas, and select elements for consistent appearance
+@mixin input-styles {
+  width: 100%;
+  padding: pxToRem(10);
+  border: 1px solid var(--border-color);
+  border-radius: pxToRem(4);
+  font-size: pxToRem(16);
+  color: var(--font-color);
+  background-color: var(--background-color);
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+}
+
+// Description: Provides a card-like appearance to elements
+// Usage: @include card-styles;
+// Example: Apply to containers or sections that should look like distinct cards
+@mixin card-styles {
+  background-color: var(--card-color);
+  padding: pxToRem(15);
+  border-radius: pxToRem(4);
+  @include shadow-general;
+}
+
+// Description: Styles for textarea fields
+// Usage: @include textarea-field;
+// Example: Use on textarea elements for consistent form styling
+@mixin textarea-field {
+  @include input-styles;
+  height: $textarea-height;
+  resize: vertical;
+}
+
+// Description: General shadow effect
+// Usage: @include shadow-general;
+// Example: Can be used on elements like cards or modals for a subtle shadow effect
+@mixin shadow-general {
+  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px,
+              rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px,
+              rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px,
+              rgba(42, 51, 70, 0.04) 0px 6px 6px -3px,
+              rgba(14, 63, 126, 0.04) 0px 12px 12px -6px,
+              rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+// ========================================
+// Extends
+// ========================================
+// These styles are better suited as extends due to their simplicity and frequency of use
+// If not frequently used we could just remove it and use button-styles instead
+
+// Description: Styling for error-related buttons
+// Usage: @extend %error-button;
+// Example: Ideal for buttons that indicate errors or cancel actions
+%error-button {
+  @include button-styles(var(--error-color), white);
+}
+
+%main-button {
+  @include button-styles;
+  font-weight: bold;
+  padding: pxToRem(10) pxToRem(20);
 }
