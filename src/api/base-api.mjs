@@ -46,7 +46,6 @@ export const registerAccount = async (payload, headers = {}) => {
  * @returns 
  */
 export const login = async (payload, headers = {}) => {
-
     try {
         const data = await HTTP.postRequest('/auth/login', payload, headers);
         return data;
@@ -54,8 +53,17 @@ export const login = async (payload, headers = {}) => {
         console.error('Error login in:', error);
         throw error;
     }
-
 }
+
+export const apiLogout = async () => {
+    try {
+        const data = await HTTP.getRequest('/auth/logout');
+        return data;
+    } catch (error) {
+        console.error('Error login out:', error);
+        throw error;
+    }
+};
 
 /**
  * @desc
@@ -71,3 +79,18 @@ export const accountInfo = async (headers = {}) => {
         throw error;
     }
 }
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const sessionStatus = async (headers = {}) => {
+    try {
+        const data = await HTTP.getRequest('/auth/session-status', headers);
+        console.log('request sessionStatus:', data);
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};

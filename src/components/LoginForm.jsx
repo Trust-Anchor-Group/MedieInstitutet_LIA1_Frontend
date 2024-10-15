@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { Fingerprint } from 'iconoir-react';
 import { login } from '../api/base-api.mjs';
+import AuthContext from '../state/AuthContext';
 
 // Component for the Login functionality
 export const LoginForm = () => {
@@ -11,6 +11,7 @@ export const LoginForm = () => {
   const [password, setPassword] = useState(''); // State to handle password input
   const [error, setError] = useState(''); // State to display any errors
   const navigate = useNavigate(); // Hook for programmatic navigation in React Router
+  const { loginState } = useContext(AuthContext);
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -19,9 +20,11 @@ export const LoginForm = () => {
     setError(''); // Reset any previous errors
 
     try {
-      await login({ username, password });
-      console.log('Login successful:');
-      navigate('/dashboard'); // Redirect to dashboard on successful login
+      const data = await login({ username, password });
+      if (data.success) {
+        loginState();
+        navigate('/dashboard'); // Redirect to dashboard on successful login
+      }
     } catch (error) {
       throw new Error('Login failed');
     }

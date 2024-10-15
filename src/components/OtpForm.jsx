@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Key } from 'iconoir-react';
 import { verifyAccount } from '../api/base-api.mjs';
-
+// todo: refactor and optimize the code
 export const OtpForm = () => {
   const [otp, setOtp] = useState(Array(6).fill(''));
   const [isPaste, setIsPaste] = useState(false);
