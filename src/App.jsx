@@ -5,9 +5,9 @@ import AuthContext from './state/AuthContext.jsx';
 import { LoadingScreen } from './components/LoadingScreen.jsx';
 
 function App() {
-  const { loading } = useContext(AuthContext);
+  const { isLoading } = useContext(AuthContext);
 
-  if (loading) {
+  if (isLoading) {
     return <LoadingScreen />;
   }
 

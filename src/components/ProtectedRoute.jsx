@@ -4,16 +4,16 @@ import AuthContext from '../state/AuthContext.jsx';
 import { LoadingScreen } from './LoadingScreen.jsx';
 
 const ProtectedRoute = () => {
-  const { isAuthenticated, loading } = useContext(AuthContext);
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       navigate('/');
     }
-  }, [isAuthenticated, loading]);
+  }, [isAuthenticated, isLoading]);
 
-  if (loading) {
+  if (isLoading) {
     return <LoadingScreen />;
   }
 
@@ -21,7 +21,7 @@ const ProtectedRoute = () => {
     return null;
   }
 
-  if (!loading) return <Outlet />;
+  if (!isLoading) return <Outlet />;
 };
 
 export default ProtectedRoute;

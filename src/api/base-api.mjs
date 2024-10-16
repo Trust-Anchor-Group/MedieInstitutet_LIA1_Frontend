@@ -48,6 +48,7 @@ export const registerAccount = async (payload, headers = {}) => {
 export const login = async (payload, headers = {}) => {
     try {
         const data = await HTTP.postRequest('/auth/login', payload, headers);
+        console.log('login data:', data);
         return data;
     } catch (error) {
         console.error('Error login in:', error);
@@ -89,6 +90,16 @@ export const sessionStatus = async (headers = {}) => {
     try {
         const data = await HTTP.getRequest('/auth/session-status', headers);
         console.log('request sessionStatus:', data);
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const refreshToken = async (headers = {}) => {
+    try {
+        const data = HTTP.getRequest('/auth/refresh', headers);
+        console.log('request refresh token:', data);
         return data;
     } catch (error) {
         throw error;

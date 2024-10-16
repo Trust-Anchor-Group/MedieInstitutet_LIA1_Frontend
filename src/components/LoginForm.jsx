@@ -20,9 +20,9 @@ export const LoginForm = () => {
     setError(''); // Reset any previous errors
 
     try {
-      const data = await login({ username, password });
-      if (data.success) {
-        loginState();
+      const response = await login({ username, password });
+      if (response.success) {
+        loginState(response.data.expires);
         navigate('/dashboard'); // Redirect to dashboard on successful login
       }
     } catch (error) {
