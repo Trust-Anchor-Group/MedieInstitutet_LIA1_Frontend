@@ -1,9 +1,14 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import AuthContext from '../state/AuthContext';
+import UserContext from '../state/UserContext';
+import { User, LogOut } from 'iconoir-react';
+import { LogoutBtn } from './LogoutBtn';
 
 const Header = () => {
-  const location = useLocation();
-  const { pathname } = location;
+  const { isAuthenticated, logoutState } = useContext(AuthContext);
+  const { userInfo } = useContext(UserContext);
+
   return (
     <header>
       <div className="header__banner">
@@ -17,12 +22,34 @@ const Header = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/register">Register</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
+          {console.log('--isAuthenticated:', isAuthenticated)}
+          {isAuthenticated ? (
+            <li>
+              <div className="action-menu">
+                <ul>
+                  <li className="profile">
+                    <NavLink to="/dashboard">
+                      {`${userInfo?.userName.charAt(0).toUpperCase()}.` || (
+                        <User />
+                      )}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <LogoutBtn />
+                  </li>
+                </ul>
+              </div>
+            </li>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/register">Register</NavLink>
+              </li>
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

@@ -12,6 +12,7 @@
 @import './abstract/typography.scss';
 @import './abstract/shadows.scss';
 @import './abstract/forms.scss';
+@import './abstract/buttons.scss';
 
 
 // Base imports
@@ -23,15 +24,18 @@
 
 // Components imports
 // @import 'components/button';
+@import './components/loaders.scss';
 @import './components/header.scss';
 @import './components/footer.scss';
 @import './components/banner.scss';
 @import './components/otpForm.scss';
 @import './components/register.scss';
+@import './components/profile-card.scss';
 
 // Page imports
 // @import 'pages/home';
 // @import 'pages/about';
+@import './pages/pages.scss';
 @import './pages/login.scss';
 @import './pages/dashboard.scss';
 

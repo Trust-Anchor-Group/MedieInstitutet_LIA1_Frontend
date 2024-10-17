@@ -1,0 +1,23 @@
+.loading {
+    &__screen {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--loading-bg-color);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    &__spinner {
+        max-width: 250px;
+    }
+}

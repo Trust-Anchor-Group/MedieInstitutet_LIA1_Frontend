@@ -4,6 +4,7 @@ header {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 30px;
 
   .header__banner {
     padding: 15px 0;
@@ -31,10 +32,10 @@ header {
     border-radius: 7px;
     padding: 10px;
 
-    ul {
+    >ul {
       list-style: none;
       display: flex;
-      gap: pxToRem(16); // Space between links
+      gap: pxToRem(5); // Space between links
       margin: 0;
       padding: 0;
     }
@@ -43,14 +44,20 @@ header {
       margin: 0;
       padding: 0;
 
-      a {
+      a,
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
         color: var(--nav-link-color);
         text-decoration: none;
         font-size: pxToRem(15);
         padding: pxToRem(8) pxToRem(12);
         border-radius: pxToRem(4);
         transition: background-color 0.3s ease;
-        display: inline-block;
 
         &.active {
           background-color: var(--nav-link-bg-hover-color);
@@ -62,6 +69,45 @@ header {
           background-color: var(--nav-link-bg-hover-color);
           color: var(--nav-link-hover-color);
         }
+      }
+    }
+  }
+
+  .action-menu {
+    position: relative;
+    padding-left: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background-color: var(--border-color);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+
+      li {
+        display: flex;
+
+        &.profile a {
+          box-shadow: inset 0px 0px 0px 1px var(--border-color);
+          background-color: transparent;
+          color: #3b5275;
+          font-weight: bold;
+          transition: box-shadow 0.3s ease;
+
+          &.active,
+          &.hover {
+            box-shadow: inset 0px 0px 0px 1px var(--nav-link-bg-hover-color);
+          }
+
+        }
+
       }
     }
   }
