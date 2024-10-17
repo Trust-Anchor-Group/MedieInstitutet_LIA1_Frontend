@@ -22,7 +22,6 @@ const Header = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          {console.log('--isAuthenticated:', isAuthenticated)}
           {isAuthenticated ? (
             <li>
               <div className="action-menu">

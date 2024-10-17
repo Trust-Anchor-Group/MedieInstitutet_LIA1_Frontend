@@ -172,12 +172,11 @@ export const OtpForm = () => {
     try {
       const data = await verifyAccount(payLoad);
       if (data) {
-        console.log('Account verified:', data);
         setEmail('');
         updateOtp({ values: Array(6).fill('') });
       }
     } catch (error) {
-      console.error('Verification failed:', error);
+      throw error;
       // Provide user feedback here
     }
   };
