@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import { Verify } from './pages/Verify';
-import { TokenDetail } from './pages/TokenDetail';
+import  TokenDetail  from './pages/TokenDetail';
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
