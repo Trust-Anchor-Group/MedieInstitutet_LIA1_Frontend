@@ -1,6 +1,10 @@
 form {
+    display: flex;
+    flex-direction: column;
 
     label {
+        display: flex;
+        flex-direction: column;
         >span:first-child {
             font-size: pxToRem(13);
         }
@@ -26,6 +30,11 @@ form {
         height: 60px;
     }
 
+
+
+
+}
+
     .form {
 
         &__header {
@@ -50,6 +59,17 @@ form {
             }
         }
 
+        &-edit {
+            background-color: sandybrown;
+            input[type="text"] {
+                height: 20px;
+            }
+                input[type="submit"],
+    button {
+        cursor: pointer;
+        height: 30px;
+    }
+        }
+
     }
 
-}

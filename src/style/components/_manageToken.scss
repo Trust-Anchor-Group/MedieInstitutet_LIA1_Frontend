@@ -1,4 +1,8 @@
-.editForm {
-    display: flex;
-  flex-direction: column;
+.tokenContainer {
+    .form {
+  &-edit { 
+    background-color: rgb(191, 171, 166);
+  }
+}
+
 }
