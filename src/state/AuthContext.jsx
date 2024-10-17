@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(initialState.isLoading);
 
   const validateSession = async () => {
-    if (isAuthenticated.current) return;
+    if (isAuthenticatedRef.current) return;
 
     setIsLoading(true);
     try {
