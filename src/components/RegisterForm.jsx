@@ -29,14 +29,11 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await registerAccount(formData);
-
+      await registerAccount(formData);
       setMessage('Check your email for a verification code');
-
       navigate('/verify'); // Redirect to the verify page
     } catch (error) {
-      console.log('Registration failed', error);
-      throw new Error('Registration failed');
+      throw new Error(error.message || 'Registration failed');
     }
   };
 

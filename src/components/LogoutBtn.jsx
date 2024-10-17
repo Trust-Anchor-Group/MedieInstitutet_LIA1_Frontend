@@ -15,9 +15,8 @@ export const LogoutBtn = () => {
       resetAuthState();
       resetUserState();
       navigate('/');
-      console.log('logout success');
     } catch (error) {
-      console.log('Error logging out:', error);
+      throw new Error(error.message || 'Error signing out');
     }
   };
 

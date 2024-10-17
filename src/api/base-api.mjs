@@ -12,11 +12,9 @@ const HTTP = new HttpClient(config.baseApi.url);
 export const verifyAccount = async (payload, headers = {}) => {
 
     try {
-        const data = await HTTP.postRequest('/auth/verify-email', payload, headers);
-        return data;
+        return await HTTP.postRequest('/auth/verify-email', payload, headers);
     } catch (error) {
-        console.error('Error verifying account:', error);
-        throw error;
+        throw new Error(error.message || 'Error verifying account');
     }
 
 }
@@ -30,11 +28,9 @@ export const verifyAccount = async (payload, headers = {}) => {
 export const registerAccount = async (payload, headers = {}) => {
 
     try {
-        const data = await HTTP.postRequest('/auth/register', payload, headers);
-        return data;
+        return await HTTP.postRequest('/auth/register', payload, headers);
     } catch (error) {
-        console.error('Error registring account:', error);
-        throw error;
+        throw new Error(error.message || 'Error registring account');
     }
 
 }
@@ -47,22 +43,17 @@ export const registerAccount = async (payload, headers = {}) => {
  */
 export const login = async (payload, headers = {}) => {
     try {
-        const data = await HTTP.postRequest('/auth/login', payload, headers);
-        console.log('login data:', data);
-        return data;
+        return await HTTP.postRequest('/auth/login', payload, headers);
     } catch (error) {
-        console.error('Error login in:', error);
-        throw error;
+        throw new Error(error.message || 'Error signing in');
     }
 }
 
 export const apiLogout = async () => {
     try {
-        const data = await HTTP.getRequest('/auth/logout');
-        return data;
+        return await HTTP.getRequest('/auth/logout');
     } catch (error) {
-        console.error('Error login out:', error);
-        throw error;
+        throw new Error(error.message || 'Error signing out');
     }
 };
 
@@ -73,11 +64,9 @@ export const apiLogout = async () => {
  */
 export const accountInfo = async (headers = {}) => {
     try {
-        const data = await HTTP.getRequest('/auth/account-info', headers);
-        return data;
+        return await HTTP.getRequest('/auth/account-info', headers);
     } catch (error) {
-        console.error('Error getting account info:', error);
-        throw error;
+        throw new Error(error.message || 'Error retrieving account info');
     }
 }
 
@@ -88,20 +77,16 @@ export const accountInfo = async (headers = {}) => {
  */
 export const sessionStatus = async (headers = {}) => {
     try {
-        const data = await HTTP.getRequest('/auth/session-status', headers);
-        console.log('request sessionStatus:', data);
-        return data;
+        return await HTTP.getRequest('/auth/session-status', headers);
     } catch (error) {
-        throw error;
+        throw new Error(error.message || 'Error verifying session status');
     }
 };
 
 export const refreshToken = async (headers = {}) => {
     try {
-        const data = HTTP.getRequest('/auth/refresh', headers);
-        console.log('request refresh token:', data);
-        return data;
+        return HTTP.getRequest('/auth/refresh', headers);
     } catch (error) {
-        throw error;
+        throw new Error(error.message || 'Error refreshing access token');
     }
 };
