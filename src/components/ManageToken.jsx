@@ -14,7 +14,7 @@ const ManageToken = ({ token, onSave }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='editForm'>
+    <form onSubmit={handleSubmit} className='form-edit'>
       <label>
         New price:
         <input
