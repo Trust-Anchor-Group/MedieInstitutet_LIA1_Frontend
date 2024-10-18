@@ -6,6 +6,7 @@ const TokenDetail = () => {
   const [tokens, setTokens] = useState(tokenData);
   const[editingTokenId, setEditingTokenId] = useState(null);
   const [expandedTokenId, setExpandedTokenId] = useState(null);
+  const [removeTokenId, setRemoveTokenId] = useState(null);
 
   //Toggle the token details visibility, if open close it and vice versa
   const toggleDetails = (tokenId) => {
@@ -24,6 +25,12 @@ const TokenDetail = () => {
     
     setEditingTokenId(null);
   };
+
+  //Remove the token from the list based on the tokenId
+  const handleRemove =(tokenId) => {
+   setRemoveTokenId(tokenId);
+    setTokens(tokens.filter((token) => token.tokenId !== tokenId));
+  }
 
   return (
     <div className="tokenList">
@@ -58,6 +65,9 @@ const TokenDetail = () => {
                   onSave={handleSave}
                 />
               )}
+              <button onClick={() => handleRemove(token.tokenId)}>
+                Remove
+              </button>
             </div>
           )}
         </div>
