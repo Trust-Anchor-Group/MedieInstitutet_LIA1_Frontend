@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
       await apiLogout();
       resetAuthState();
     } catch (error) {
-      console.log('Error logging out:', error);
+      throw new Error(error.message || 'Error signing out');
     }
   };
 
