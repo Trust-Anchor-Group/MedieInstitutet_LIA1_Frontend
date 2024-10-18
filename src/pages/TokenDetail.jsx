@@ -28,8 +28,12 @@ const TokenDetail = () => {
 
   //Remove the token from the list based on the tokenId
   const handleRemove =(tokenId) => {
-   setRemoveTokenId(tokenId);
-    setTokens(tokens.filter((token) => token.tokenId !== tokenId));
+    const confirmRemove = window.confirm("Are you sure you want to remove this token?");
+    if(confirmRemove){
+      setRemoveTokenId(tokenId);
+      setTokens(tokens.filter((token) => token.tokenId !== tokenId));
+    }
+   
   }
 
   return (
