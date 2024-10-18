@@ -50,6 +50,6 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-// CSS STYLING - REMOVE FOR PRODUCTION
-main.css 
+# CSS STYLING - REMOVE FOR PRODUCTION
 main.css.map
+main.css

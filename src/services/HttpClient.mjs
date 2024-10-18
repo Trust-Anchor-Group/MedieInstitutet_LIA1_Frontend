@@ -30,11 +30,14 @@ export default class HttpClient {
 
             const response = await fetch(`${this.url}${endpoint}`, {
                 method: 'POST',
+                credentials: 'include',
                 headers,
                 body: JSON.stringify(payload)
             });
 
-            const data = await response.json();
+            const contentType = response.headers.get('content-type');
+            const isJson = contentType && contentType.includes('application/json');
+            const data = isJson ? await response.json() : await response.text();
 
             if (!response.ok) {
                 throw new Error(data.message || `HTTP error! status: ${response.status}`);
@@ -43,8 +46,33 @@ export default class HttpClient {
             return data;
 
         } catch (error) {
-            throw new Error('Error making POST request', error);
+            throw error;
         }
     }
+
+    async getRequest(endpoint, additionalHeaders = {}) {
+
+        const headers = this.setHeaders(additionalHeaders);
+
+        try {
+            const response = await fetch(`${this.url}${endpoint}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers,
+            });
+
+            const contentType = response.headers.get('content-type');
+            const isJson = contentType && contentType.includes('application/json');
+            const data = isJson ? await response.json() : await response.text();
+
+            if (!response.ok) {
+                throw new Error(data.message || `HTTP error! status: ${response.status}`);
+            }
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    };
 
 }

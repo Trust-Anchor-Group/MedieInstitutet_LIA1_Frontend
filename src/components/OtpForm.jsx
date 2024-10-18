@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Key } from 'iconoir-react';
 import { verifyAccount } from '../api/base-api.mjs';
-
+// todo: refactor and optimize the code
 export const OtpForm = () => {
   const [otp, setOtp] = useState(Array(6).fill(''));
   const [isPaste, setIsPaste] = useState(false);
@@ -77,10 +77,13 @@ export const OtpForm = () => {
       const focusedInput = inputsRef.current.find(
         (input) => input === document.activeElement
       );
-      const nextInput = focusedInput.nextElementSibling;
-      if (focusedInput && focusedInput.value !== '' && nextInput) {
-        nextInput.disabled = false;
-        nextInput.focus();
+
+      if (focusedInput) {
+        const nextInput = focusedInput.nextElementSibling;
+        if (focusedInput.value !== '' && nextInput) {
+          nextInput.disabled = false;
+          nextInput.focus();
+        }
       }
     }
   };
@@ -167,11 +170,13 @@ export const OtpForm = () => {
     };
 
     try {
-      await verifyAccount(payLoad, {
-        Authorization: `Todo: Bearer some token here`,
-      });
+      const data = await verifyAccount(payLoad);
+      if (data) {
+        setEmail('');
+        updateOtp({ values: Array(6).fill('') });
+      }
     } catch (error) {
-      console.error('Verification failed:', error);
+      throw error;
       // Provide user feedback here
     }
   };
@@ -191,7 +196,7 @@ export const OtpForm = () => {
         </div>
         <label>
           <span>Email:</span>
-          <input type="email" onChange={emailHandler} />
+          <input type="email" onChange={emailHandler} value={email} />
         </label>
 
         <div className="otp-field">
@@ -212,9 +217,11 @@ export const OtpForm = () => {
 
         <input type="submit" value="Verify" disabled={!formValidation()} />
 
-        <span>
-          Haven't recieved a verification code? <a href="">Resend code</a>
-        </span>
+        <div className="form__footer form__msg form__msg-suggestion">
+          <span>
+            Haven't recieved a verification code? <a href="">Resend code</a>
+          </span>
+        </div>
       </form>
     </>
   );

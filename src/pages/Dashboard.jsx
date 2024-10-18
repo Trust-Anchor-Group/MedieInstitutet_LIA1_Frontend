@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ProfileCard } from '../components/ProfileCard';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -15,11 +16,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <h1>Welcome to Your Dashboard</h1>
-      <p>Hello, {userName || 'User'}!</p>
-      <p>You have successfully logged in.</p>
-      <p>SOON this will mean you can do something!</p>
-      <button onClick={handleLogout} className="btn-logout">Logout</button>
+      <ProfileCard />
     </div>
   );
 };

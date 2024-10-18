@@ -1,6 +1,11 @@
 form {
+    padding: 40px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    border-radius: 7px;
+    border: 1px solid var(--border-color);
 
     label {
         display: flex;
@@ -12,7 +17,9 @@ form {
 
     input[type="text"],
     input[type="submit"],
-    input[type="email"] {
+    input[type="email"],
+    input[type="password"],
+    button {
         height: 50px;
         border: 1px solid var(--border-color);
         border-radius: 5px;
@@ -26,8 +33,18 @@ form {
 
     input[type="submit"],
     button {
+        display: block;
         cursor: pointer;
         height: 60px;
+
+        background-color: var(--button-primary-color);
+        color: var(--button-text-color);
+
+        &:disabled {
+            background-color: #f1f5f7;
+            color: #ccc;
+            cursor: not-allowed;
+        }
     }
 
 
@@ -69,7 +86,14 @@ form {
         cursor: pointer;
         height: 30px;
     }
+        &__msg {
+            font-size: pxToRem(13);
+        }
+
+        &__terms {
+            font-size: pxToRem(13);
         }
 
     }
 
+}

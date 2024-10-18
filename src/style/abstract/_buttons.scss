@@ -1,0 +1,13 @@
+.btn {
+    &__logout {
+        color: var(--logout-color);
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            color: var(--logout-color);
+            background-color: transparent;
+            box-shadow: inset 0px 0px 0px 1px var(--logout-color);
+        }
+
+    }
+}
