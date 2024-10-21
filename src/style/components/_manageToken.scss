@@ -6,3 +6,26 @@
 }
 
 }
+
+.search-form {
+  .search-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--background-color);
+  }
+
+  .search-icon {
+    margin-right: 4px;
+    color: var(--primary-color);
+  }
+
+  .search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+  }
+}
