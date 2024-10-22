@@ -3,58 +3,77 @@ import { Link } from 'react-router-dom';
 import { registerAccount } from '../api/base-api.mjs';
 import { User } from 'iconoir-react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import registerSchema from '../validation/schemas/registerSchema';
+import { WarningCircle } from 'iconoir-react';
+import { TailSpin } from 'react-loader-spinner';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
+  const [feedback, setFeedback] = useState({});
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+    mode: 'onBlur',
   });
 
-  const [message, setMessage] = useState('');
-
-  // Function to handle changes in the input fields of the form.
-  const handleChange = (e) => {
-    // Destructure name and value from the event target (input field)
-    const { name, value } = e.target;
-
-    // Update the formData state with the new value for the corresponding input field
-    setFormData({
-      ...formData, // Spread the existing formData
-      [name]: value, // Update the specific field with the new value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
+    const { username, email, password } = data;
     try {
-      await registerAccount(formData);
-      setMessage('Check your email for a verification code');
-      navigate('/verify'); // Redirect to the verify page
+      const response = await registerAccount({ username, email, password });
+      if (response.success) {
+        setFeedback({
+          type: 'success',
+          message:
+            'Successfully registred your account. Check your email for a validation code.',
+        });
+        setTimeout(() => navigate('/verify'), 3000);
+      }
     } catch (error) {
-      throw new Error(error.message || 'Registration failed');
+      setFeedback({
+        type: 'error',
+        message: error.message || 'An error occurred. Please try again later.',
+      });
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="register-form">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="form__small shadow__general"
+      >
         <div className="form__header">
           <span className="form__icon-status">
             <User />
           </span>
           <span>Register account</span>
+
+          {feedback.message && (
+            <div className={`form__feedback form__feedback-${feedback.type}`}>
+              {feedback.message}
+            </div>
+          )}
         </div>
         <label>
           <span>Username:</span>
           <input
             name="username"
             type="text"
-            value={formData.username}
-            onChange={handleChange}
-            required
+            className={errors.username ? 'error' : ''}
+            {...register('username')}
           />
+          {errors.username && (
+            <span className="form__msg form__msg-error">
+              <WarningCircle />
+              <span>{errors.username.message}</span>
+            </span>
+          )}
         </label>
 
         <label>
@@ -62,10 +81,15 @@ const RegisterForm = () => {
           <input
             name="email"
             type="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            className={errors.email ? 'error' : ''}
+            {...register('email')}
           />
+          {errors.email && (
+            <span className="form__msg form__msg-error">
+              <WarningCircle />
+              <span>{errors.email.message}</span>
+            </span>
+          )}
         </label>
 
         <label>
@@ -73,20 +97,25 @@ const RegisterForm = () => {
           <input
             name="password"
             type="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
+            className={errors.password ? 'error' : ''}
+            {...register('password')}
           />
+          {errors.password && (
+            <span className="form__msg form__msg-error">
+              <WarningCircle />
+              <span>{errors.password.message}</span>
+            </span>
+          )}
         </label>
 
-        <button type="submit" className="btn-primary">
-          Register
+        <button type="submit">
+          {isSubmitting ? <TailSpin /> : 'Register'}
         </button>
-        {message && <p className="success-message">{message}</p>}
+
         <div className="form__footer">
-          <div className="login-link form__msg">
+          <div className="form__alternative">
             <p>
-              Already have an account? <Link to="/login">Login</Link>
+              Already have an account? <Link to="/login"> Sign in</Link>
             </p>
           </div>
           <div className="form__terms">
