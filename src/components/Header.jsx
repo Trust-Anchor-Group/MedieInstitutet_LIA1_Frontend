@@ -28,7 +28,9 @@ const Header = () => {
                 <ul>
                   <li className="profile">
                     <NavLink to="/dashboard">
-                      {`${userInfo?.userName.charAt(0).toUpperCase()}.` || (
+                      {userInfo && userInfo.userName ? (
+                        `${userInfo.userName.charAt(0).toUpperCase()}.`
+                      ) : (
                         <User />
                       )}
                     </NavLink>
@@ -45,7 +47,7 @@ const Header = () => {
                 <NavLink to="/register">Register</NavLink>
               </li>
               <li>
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/login">Sign in</NavLink>
               </li>
             </>
           )}
