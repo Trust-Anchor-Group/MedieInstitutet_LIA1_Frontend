@@ -1,74 +1,112 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Fingerprint } from 'iconoir-react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import loginSchema from '../validation/schemas/loginSchema';
+import { Fingerprint, WarningCircle } from 'iconoir-react';
 import { login } from '../api/base-api.mjs';
 import AuthContext from '../state/AuthContext';
+import { TailSpin } from 'react-loader-spinner';
 
-// Component for the Login functionality
 export const LoginForm = () => {
-  // State hooks for managing the form inputs and errors
-  const [username, setUsername] = useState(''); // State to handle username input
-  const [password, setPassword] = useState(''); // State to handle password input
-  const [error, setError] = useState(''); // State to display any errors
-  const navigate = useNavigate(); // Hook for programmatic navigation in React Router
+  // Set up the form with React Hook Form and Yup validation
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: yupResolver(loginSchema), // Integrate the Yup schema with React Hook Form
+    mode: 'onBlur',
+  });
+
   const { loginState } = useContext(AuthContext);
+  const [feedback, setFeedback] = useState({});
+  const navigate = useNavigate();
 
-  // Function to handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+  useEffect(() => {}, [feedback]);
 
-    setError(''); // Reset any previous errors
-
+  const onSubmit = async (data) => {
+    const { username, password } = data;
     try {
       const response = await login({ username, password });
+
       if (response.success) {
-        loginState(response.data.expires);
-        navigate('/dashboard'); // Redirect to dashboard on successful login
+        reset();
+        loginState();
+        setFeedback({
+          type: 'success',
+          message: 'Success! Redirecting...',
+        });
+        setTimeout(() => navigate('/dashboard'), 1000);
       }
     } catch (error) {
-      throw new Error('Login failed');
+      setFeedback({
+        type: 'error',
+        message: error.message || 'An error occurred. Please try again later.',
+      });
     }
   };
 
-  // Render UI for the login form
   return (
     <>
-      {error && <p className="error-message">{error}</p>}{' '}
-      {/* Display error if any */}
-      <form onSubmit={handleSubmit} className="login-form">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="form__small shadow__general"
+      >
         <div className="form__header">
           <span className="form__icon-status">
             <Fingerprint />
           </span>
-          <span>Login</span>
+          <span>Sign in</span>
+
+          {feedback.message && (
+            <div className={`form__feedback form__feedback-${feedback.type}`}>
+              {feedback.message}
+            </div>
+          )}
         </div>
-        <label>
+
+        <label htmlFor="username">
           <span>Username:</span>
           <input
-            type="text"
             id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)} // Update username state on input change
-            required
+            type="text"
+            className={errors.username ? 'error' : ''}
+            {...register('username')}
+            disabled={isSubmitting}
           />
+          {errors.username && (
+            <span className="form__msg form__msg-error">
+              <WarningCircle />
+              <span>{errors.username.message}</span>
+            </span>
+          )}
         </label>
 
         <label htmlFor="password">
           <span>Password:</span>
           <input
-            type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} // Update password state on input change
-            required
+            type="password"
+            className={errors.password ? 'error' : ''}
+            {...register('password')}
+            disabled={isSubmitting}
           />
+          {errors.password && (
+            <span className="form__msg form__msg-error">
+              <WarningCircle />
+              <span>{errors.password.message}</span>
+            </span>
+          )}
         </label>
 
-        <button type="submit" className="btn-primary">
-          Login
+        <button type="submit" className="btn-primary" disabled={isSubmitting}>
+          {isSubmitting ? <TailSpin /> : 'Sign in'}
         </button>
+
         <div className="form__footer">
-          <div className="register-link form__msg">
+          <div className="register-link form__alternative">
             <p>
               Don't have an account? <Link to="/register">Register</Link>
             </p>

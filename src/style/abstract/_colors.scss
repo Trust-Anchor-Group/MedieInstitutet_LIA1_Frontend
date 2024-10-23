@@ -25,6 +25,20 @@ $light-status-pending-color: #cff4fc;
 $light-loading-bg-color: #fbfbfb;
 $light-logout-color: #d31414;
 
+// Messages
+$light-error-color: #a80b0b;
+$light-error-border-color: #ffe2e1;
+$light-error-bg-color: #ffeaea;
+
+$light-warning-color: #a80b0b;
+$light-warning-border-color: #fef7f6;
+$light-warning-bg-color: #ffeaea;
+
+$light-success-color: #5a8f1d;
+$light-success-border-color: #d1e7b9;
+$light-success-bg-color: #e6f2d9;
+
+
 // Dark theme colors - Optional
 // ! Change these colors to match the TAG design colors and add/remove as needed
 $dark-background-color: black;
@@ -49,7 +63,22 @@ $dark-status-pending-color: #d0e2ff;
 $dark-loading-bg-color: #333;
 $dark-logout-color: #d31414;
 
+// Messages
+$dark-error-color: #a80b0b;
+$dark-error-border-color: #ffe2e1;
+$dark-error-bg-color: #ffeaea;
+
+$dark-warning-color: #a80b0b;
+$dark-warning-border-color: #fef7f6;
+$dark-warning-bg-color: #ffeaea;
+
+$dark-success-color: #a80b0b;
+$dark-success-border-color: #fef7f6;
+$dark-success-bg-color: #ffeaea;
+
+// ==============================================================
 // CSS variables defined 
+// ==============================================================
 :root {
   --background-color: #{$light-background-color};
   --primary-color: #{$light-primary-color};
@@ -78,8 +107,24 @@ $dark-logout-color: #d31414;
 
   // Loading screen
   --loading-bg-color: #{$light-loading-bg-color};
+
+  // Messages
+  --msg-error-color: #{$light-error-color};
+  --msg-error-border-color: #{$light-error-border-color};
+  --msg-error-bg-color: #{$light-error-bg-color};
+
+  --msg-warning-color: #{$light-warning-color};
+  --msg-warning-border-color: #{$light-warning-border-color};
+  --msg-warning-bg-color: #{$light-warning-bg-color};
+
+  --msg-success-color: #{$light-success-color};
+  --msg-success-border-color: #{$light-success-border-color};
+  --msg-success-bg-color: #{$light-success-bg-color};
 }
 
+// ==============================================================
+// CSS Dark theme
+// ==============================================================
 [data-theme='dark'] {
   --background-color: #{$dark-background-color};
   --primary-color: #{$dark-primary-color};
@@ -92,8 +137,33 @@ $dark-logout-color: #d31414;
   --error-color: #{$dark-error-color};
   --success-color: #{$dark-success-color};
   --accentuate-color: #{$dark-accentuate-color};
+
+  // Navigation
   --navigation-color: #{$dark-nav-color};
   --nav-link-color: #{$dark-nav-link-color};
   --nav-link-hover-color: #{$dark-nav-link-hover-color};
-  --nav-link-bg-hover-color: #{$light-status-pending-color};
+  --nav-link-bg-hover-color: #{$dark-status-pending-color};
+  --logout-color: #{$dark-logout-color};
+
+  // Status colors
+  --status-success-color: #{$dark-status-success-color};
+  --status-error-color: #{$dark-status-error-color};
+  --status-warning-color: #{$dark-status-warning-color};
+  --status-pending-color: #{$dark-status-pending-color};
+
+  // Loading screen
+  --loading-bg-color: #{$dark-loading-bg-color};
+
+  // Messages
+  --msg-error-color: #{$dark-error-color};
+  --msg-error-border-color: #{$dark-error-border-color};
+  --msg-error-bg-color: #{$dark-error-bg-color};
+
+  --msg-warning-color: #{$dark-warning-color};
+  --msg-warning-border-color: #{$dark-warning-border-color};
+  --msg-warning-bg-color: #{$dark-warning-bg-color};
+
+  --msg-success-color: #{$dark-success-color};
+  --msg-success-border-color: #{$dark-success-border-color};
+  --msg-success-bg-color: #{$dark-success-bg-color};
 }
