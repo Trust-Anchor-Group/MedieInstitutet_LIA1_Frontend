@@ -4,8 +4,12 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Ids from './pages/Ids';
+import Contracts from './pages/Contracts';
+import Settings from './pages/Settings';
 import { Verify } from './pages/Verify';
 import ProtectedRoute from './components/ProtectedRoute';
+import DashLayout from './pages/DashLayout';
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
@@ -20,7 +24,35 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: '/dashboard', // Path for the Dashboard component
-            element: <Dashboard />,
+            element: (
+              <DashLayout>
+                <Dashboard />
+              </DashLayout>
+            ),
+          },
+          {
+            path: '/ids', // Path for the Dashboard component
+            element: (
+              <DashLayout>
+                <Ids />
+              </DashLayout>
+            ),
+          },
+          {
+            path: '/contracts', // Path for the Dashboard component
+            element: (
+              <DashLayout>
+                <Contracts />
+              </DashLayout>
+            ),
+          },
+          {
+            path: '/settings', // Path for the Dashboard component
+            element: (
+              <DashLayout>
+                <Settings />
+              </DashLayout>
+            ),
           },
         ],
       },

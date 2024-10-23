@@ -29,12 +29,16 @@
 @import './components/footer.scss';
 @import './components/banner.scss';
 @import './components/profile-card.scss';
+@import './components/dash-nav.scss';
 
 // Page imports
 // @import 'pages/home';
 // @import 'pages/about';
 @import './pages/pages.scss';
 @import './pages/dashboard.scss';
+
+// Layout
+@import './layout/dash-layout.scss';
 
 // 6. Themes imports (if any), preferable if you ask me :)
 // @import 'themes/dark';
