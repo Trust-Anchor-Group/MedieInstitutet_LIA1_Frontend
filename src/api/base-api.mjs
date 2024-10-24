@@ -83,6 +83,11 @@ export const sessionStatus = async (headers = {}) => {
     }
 };
 
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
 export const refreshToken = async (headers = {}) => {
     try {
         return HTTP.getRequest('/auth/refresh', headers);
@@ -90,3 +95,16 @@ export const refreshToken = async (headers = {}) => {
         throw new Error(error.message || 'Error refreshing access token');
     }
 };
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const getIds = async (headers = {}) => {
+    try {
+        return await HTTP.getRequest('/auth/ids');
+    } catch (error) {
+        throw new Error(error.message || 'Error fetching IDs');
+    }
+}

@@ -7,9 +7,12 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @include heading-sizes(30, 4);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+p,
+a,
+span,
+button {
+  font-size: pxToRem(14);
 }

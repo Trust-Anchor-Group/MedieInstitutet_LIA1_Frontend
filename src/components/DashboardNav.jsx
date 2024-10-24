@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Fingerprint, User, Page, Settings } from 'iconoir-react';
+import { Fingerprint, User, Page, Settings, EditPencil } from 'iconoir-react';
 
 export const DashboardNav = () => {
   return (
@@ -16,11 +16,11 @@ export const DashboardNav = () => {
         </li>
 
         <li>
-          <NavLink to="/ids">
+          <NavLink to="/identifications">
             <span className="dash-nav__icon">
               <Fingerprint />
             </span>
-            <span>ID</span>
+            <span>Identifications</span>
           </NavLink>
         </li>
 
@@ -30,6 +30,16 @@ export const DashboardNav = () => {
               <Page />
             </span>
             <span>Contracts</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/signature">
+            <span className="dash-nav__icon">
+              <EditPencil />
+            </span>
+            <span>Signature requests</span>
+            <span className="notification">3</span>
           </NavLink>
         </li>
 

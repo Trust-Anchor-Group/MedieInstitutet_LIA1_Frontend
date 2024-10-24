@@ -5,7 +5,7 @@ const DashLayout = ({ children }) => {
   return (
     <div className="dash-layout">
       <DashboardNav />
-      {children}
+      <div className="dash-layout__content">{children}</div>
     </div>
   );
 };

@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Ids = () => {
+export const Signature = () => {
   return (
     <div>
-      <h2>Ids</h2>
+      <h2>Signature</h2>
     </div>
   );
 };
-
-export default Ids;

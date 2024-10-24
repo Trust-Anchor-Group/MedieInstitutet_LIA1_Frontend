@@ -1,0 +1,21 @@
+.id-list {
+
+    .id-action-btn {
+        margin: 0;
+        padding: 0 15px;
+        height: 60px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        background-color: var(--card-color);
+        // border: 1px solid var(--border-color);
+        border: none;
+        border-radius: 7px;
+
+        &__content {
+            text-align: left;
+        }
+    }
+}

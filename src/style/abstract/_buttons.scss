@@ -1,3 +1,11 @@
+button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .btn {
     &__logout {
         color: var(--logout-color);
@@ -9,5 +17,17 @@
             box-shadow: inset 0px 0px 0px 1px var(--logout-color);
         }
 
+    }
+
+    &__cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        padding: 0 20px;
+        gap: 10px;
+        background-color: #fff;
+        border-radius: 7px;
+        @extend .shadow__general;
     }
 }
