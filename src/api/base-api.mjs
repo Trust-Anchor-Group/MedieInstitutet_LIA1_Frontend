@@ -90,3 +90,11 @@ export const refreshToken = async (headers = {}) => {
         throw new Error(error.message || 'Error refreshing access token');
     }
 };
+
+export const getContractData = async (payload) => {
+  try {
+    return HTTP.postRequest('/auth/get-contract', payload);
+  } catch (error) {
+    throw new Error(error.message || 'Error fetching contract data');
+  }
+};
