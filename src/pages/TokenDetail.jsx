@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import tokenData from '../data/tokenData'; 
 import EditTokenData from '../components/EditTokenData';
 import SearchTokenBar from '../components/SearchTokenBar';
+import { getContractData } from '../api/base-api.mjs';
+
 
 const TokenDetail = () => {
   const [tokens, setTokens] = useState(tokenData);
@@ -9,6 +11,8 @@ const TokenDetail = () => {
   const [expandedTokenId, setExpandedTokenId] = useState(null);
   const [hideTokenId, setHideTokenId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [contractId, setContractId] = useState("");
+  const [contractDataResponse, setContractDataResponse] = useState("");
 
   //Toggle the token details visibility, if open close it and vice versa
   const toggleDetails = (tokenId) => {
@@ -16,8 +20,6 @@ const TokenDetail = () => {
   };
 
   const handleSave = (updatedToken) => {
-    console.log("updatedToken:", updatedToken);
-    
     setTokens(
       tokens.map((token) =>
         token.tokenId === updatedToken.tokenId ? updatedToken : token
@@ -40,6 +42,19 @@ const TokenDetail = () => {
    const filteredTokens = tokens.filter((token) =>
      token.name.toLowerCase().includes(searchQuery.toLowerCase())
    );
+
+
+   
+
+   const contractData = async () => {
+     try {
+       const response = await getContractData({contractId});
+       setContractDataResponse(response);
+       console.log(response);
+     } catch (error) {
+       console.log(error);
+     }
+   };
 
   return (
     <>
@@ -87,6 +102,21 @@ const TokenDetail = () => {
           </div>
         ))}
       </div>
+      <div>
+        <h3>Provide contract id</h3>
+          <input 
+          type="text"
+          value={contractId}
+          onChange={(e) => setContractId(e.target.value)}
+          />
+          <button onClick={contractData}>Get contract data</button>
+      </div>
+      {contractDataResponse && (
+        <div>
+          <h4>Contract Data</h4>
+          <span>{JSON.stringify(contractDataResponse.data)}</span>
+        </div>
+      )}
     </>
   );
 };

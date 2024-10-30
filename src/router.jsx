@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import { Verify } from './pages/Verify';
 import ProtectedRoute from './components/ProtectedRoute';
+import TokenDetail from './pages/TokenDetail';
 
 // Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
@@ -39,6 +40,10 @@ export const Router = createBrowserRouter([
       {
         path: '/login', //Path for the login component
         element: <Login />, //Component to render at the /login path
+      },
+      {
+        path: '/tokendetail',
+        element: <TokenDetail />,
       },
     ],
   },
