@@ -1,7 +1,7 @@
 import React from 'react';
 import { Banner } from '../components/Banner';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Banner imageSource="/public/assets/images/hero.jpg">
@@ -15,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

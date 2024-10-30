@@ -1,10 +1,12 @@
 import React from 'react';
 import { VerifyForm } from '../components/VerifyForm';
 
-export const Verify = () => {
+const VerifyPage = () => {
   return (
     <div className="page__form-container">
       <VerifyForm />
     </div>
   );
 };
+
+export default VerifyPage;
