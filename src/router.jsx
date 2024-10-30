@@ -1,86 +1,37 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './pages/Layout';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import Identifications from './pages/Identifications';
-import Contracts from './pages/Contracts';
-import Settings from './pages/Settings';
-import { Verify } from './pages/Verify';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 import ProtectedRoute from './components/ProtectedRoute';
-import DashLayout from './pages/DashLayout';
-import { Signature } from './pages/Signature';
+import DashLayout from './pages/Dashboard/DashLayout';
+import { dashboardRoutes } from './routes/dashboardRoutes';
+import VerifyPage from './pages/VerifyPage';
 
-// Creating a router configuration using createBrowserRouter
 export const Router = createBrowserRouter([
   {
-    path: '/', //Root path
-    element: <Layout />, //Component to render at the root path
-
+    path: '/',
+    element: <Layout />,
+    errorElement: (
+      <div>
+        <h1>404 Not Found</h1>
+      </div>
+    ),
     children: [
-      //Nested routes
       {
         element: <ProtectedRoute />,
         children: [
           {
-            path: '/dashboard', // Path for the Dashboard component
-            element: (
-              <DashLayout>
-                <Dashboard />
-              </DashLayout>
-            ),
-          },
-          {
-            path: '/identifications', // Path for the Dashboard component
-            element: (
-              <DashLayout>
-                <Identifications />
-              </DashLayout>
-            ),
-          },
-          {
-            path: '/contracts', // Path for the Dashboard component
-            element: (
-              <DashLayout>
-                <Contracts />
-              </DashLayout>
-            ),
-          },
-          {
-            path: '/signature', // Path for the Dashboard component
-            element: (
-              <DashLayout>
-                <Signature />
-              </DashLayout>
-            ),
-          },
-          {
-            path: '/settings', // Path for the Dashboard component
-            element: (
-              <DashLayout>
-                <Settings />
-              </DashLayout>
-            ),
+            path: '/dashboard/*',
+            element: <DashLayout />,
+            children: dashboardRoutes,
           },
         ],
       },
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: '/register', //Path for the Register component
-        element: <Register />, //Component to render at the /register path
-      },
-      {
-        path: '/verify', //Path for the Verify component
-        element: <Verify />, //Component to render at the /verify path
-      },
-      {
-        path: '/login', //Path for the login component
-        element: <Login />, //Component to render at the /login path
-      },
+      { index: true, element: <HomePage /> },
+      { path: '/register', element: <RegisterPage /> },
+      { path: '/verify', element: <VerifyPage /> },
+      { path: '/login', element: <LoginPage /> },
     ],
   },
 ]);
