@@ -1,3 +1,4 @@
+// src/api/base-api.mjs
 import HttpClient from "../services/HttpClient.mjs";
 import config from "../config/config.mjs";
 
@@ -160,3 +161,24 @@ export const getId = async (payload, headers = {}) => {
         throw new Error(error.message || 'Error fetching ID');
     }
 }
+export const createMicroLoan = async (contractData) => {
+    try {
+        const response = await fetch(`/api/v1/contracts/microloan`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contractData),
+            credentials: 'include'
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to create micro loan contract');
+        }
+
+        return data;
+    } catch (error) {
+        throw new Error(error.message || 'Error creating micro loan contract');
+    }
+};

@@ -1,0 +1,35 @@
+.page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.microloan__hero {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.microloan__content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.microloan__content h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.microloan__content p {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.microloan__actions {
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

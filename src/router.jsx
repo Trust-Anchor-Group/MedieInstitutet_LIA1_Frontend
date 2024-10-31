@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import DashLayout from './pages/Dashboard/DashLayout';
 import { dashboardRoutes } from './routes/dashboardRoutes';
 import VerifyPage from './pages/VerifyPage';
+import MicroLoan from './pages/MicroLoan';
 
 export const Router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const Router = createBrowserRouter([
             path: 'dashboard',
             element: <DashLayout />,
             children: dashboardRoutes,
+          },
+          {
+            path: '/microloan',
+            element: <MicroLoan />
           },
         ],
       },
