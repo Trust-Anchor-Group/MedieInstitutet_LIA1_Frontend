@@ -1,8 +1,11 @@
 import React from 'react';
-import { IdDetails } from '../../../components/IdDetails';
+import { useLocation } from 'react-router-dom';
+import { IdCard } from '../../../components/IdCard';
 
 const IdDetailsPage = () => {
-  return <IdDetails />;
+  const location = useLocation();
+  const { id } = location.state || {};
+  return <IdCard id={id} />;
 };
 
 export default IdDetailsPage;

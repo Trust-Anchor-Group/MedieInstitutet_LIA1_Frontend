@@ -1,8 +1,8 @@
 import React from 'react';
-import { IdRegisterForm } from '../../../components/IdRegisterForm';
+import { IdForm } from '../../../components/IdForm';
 
 const IdRegisterPage = () => {
-  return <IdRegisterForm />;
+  return <IdForm />;
 };
 
 export default IdRegisterPage;
