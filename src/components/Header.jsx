@@ -4,6 +4,7 @@ import AuthContext from '../state/AuthContext';
 import UserContext from '../state/UserContext';
 import { User, LogOut } from 'iconoir-react';
 import { LogoutBtn } from './LogoutBtn';
+import logoImage from '../assets/images/logo.png';
 
 const Header = () => {
   const { isAuthenticated, logoutState } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Header = () => {
     <header>
       <div className="header__banner">
         <a href="/" className="logo">
-          <img src="./public/logo.png" alt="" />
+          <img src={logoImage} alt="" />
         </a>
       </div>
 
