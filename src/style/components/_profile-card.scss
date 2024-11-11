@@ -1,20 +1,13 @@
 .profile-card {
     text-align: left;
-    padding: 20px;
+    padding: 40px;
     background-color: var(--card-color);
     position: relative;
+    border-radius: 7px;
+    @extend .shadow__general;
 
-    &::before {
-        content: "FETCH DEMO";
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        padding: 3px 7px;
-        background-color: #2196F3;
-        color: #eff0f8;
-        font-size: pxToRem(13);
-        font-weight: bold;
+    h3 {
+        margin-top: 0px;
     }
 
     ul {
@@ -27,7 +20,8 @@
             flex-direction: column;
 
             span:first-child {
-                font-weight: bold;
+                color: var(--secondary-color);
+                font-size: pxToRem(12);
             }
         }
     }

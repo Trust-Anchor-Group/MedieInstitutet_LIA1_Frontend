@@ -1,0 +1,50 @@
+.multiform {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 7px;
+    @extend .shadow__general;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__content {
+        h3 {
+            margin-top: 0;
+        }
+    }
+
+    &__msg {
+        // max-width: 500px;
+        // margin-right: auto;
+        // margin-left: auto;
+        padding: 20px;
+        // background-color: #fff9ba;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+
+        h3 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 0;
+
+            &:first-of-type:not(:last-of-type),
+            &+p {
+                margin-bottom: revert;
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .next {
+            background-color: #1e5ff6;
+            color: #fff;
+        }
+    }
+}

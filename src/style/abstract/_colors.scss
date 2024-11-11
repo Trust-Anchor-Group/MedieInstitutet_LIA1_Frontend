@@ -38,6 +38,10 @@ $light-success-color: #5a8f1d;
 $light-success-border-color: #d1e7b9;
 $light-success-bg-color: #e6f2d9;
 
+$light-info-color: #915901;
+$light-info-border-color: #eed0a7;
+$light-info-bg-color: #fbecd7;
+
 
 // Dark theme colors - Optional
 // ! Change these colors to match the TAG design colors and add/remove as needed
@@ -76,6 +80,10 @@ $dark-success-color: #a80b0b;
 $dark-success-border-color: #fef7f6;
 $dark-success-bg-color: #ffeaea;
 
+$dark-info-color: #915901;
+$dark-info-border-color: #eed0a7;
+$dark-info-bg-color: #fbecd7;
+
 // ==============================================================
 // CSS variables defined 
 // ==============================================================
@@ -108,7 +116,7 @@ $dark-success-bg-color: #ffeaea;
   // Loading screen
   --loading-bg-color: #{$light-loading-bg-color};
 
-  // Messages
+  // Errors
   --msg-error-color: #{$light-error-color};
   --msg-error-border-color: #{$light-error-border-color};
   --msg-error-bg-color: #{$light-error-bg-color};
@@ -120,6 +128,10 @@ $dark-success-bg-color: #ffeaea;
   --msg-success-color: #{$light-success-color};
   --msg-success-border-color: #{$light-success-border-color};
   --msg-success-bg-color: #{$light-success-bg-color};
+
+  --msg-info-color: #{$light-info-color};
+  --msg-info-border-color: #{$light-info-border-color};
+  --msg-info-bg-color: #{$light-info-bg-color};
 }
 
 // ==============================================================
@@ -166,4 +178,8 @@ $dark-success-bg-color: #ffeaea;
   --msg-success-color: #{$dark-success-color};
   --msg-success-border-color: #{$dark-success-border-color};
   --msg-success-bg-color: #{$dark-success-bg-color};
+
+  --msg-info-color: #{$dark-info-color};
+  --msg-info-border-color: #{$dark-info-border-color};
+  --msg-info-bg-color: #{$dark-info-bg-color};
 }

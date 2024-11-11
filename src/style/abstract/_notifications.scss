@@ -11,3 +11,23 @@
     display: flex;
     justify-content: center;
 }
+
+.message {
+    padding: 20px;
+    border-radius: 7px;
+
+    p {
+        margin-bottom: 0;
+
+        &:first-of-type:not(:last-of-type),
+        &+p {
+            margin-bottom: revert;
+        }
+    }
+
+    &__info {
+        background-color: var(--msg-info-bg-color);
+        color: var(--msg-info-color);
+        border: 1px solid var(--msg-info-border-color);
+    }
+}

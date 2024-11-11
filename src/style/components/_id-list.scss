@@ -1,21 +1,31 @@
 .id-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     .id-action-btn {
-        margin: 0;
-        padding: 0 15px;
-        height: 60px;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
         gap: 15px;
         width: 100%;
         background-color: var(--card-color);
-        // border: 1px solid var(--border-color);
-        border: none;
-        border-radius: 7px;
 
         &__content {
             text-align: left;
+        }
+
+        &__info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        &__status {
+            border: 1px solid;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: pxToRem(11);
         }
     }
 }

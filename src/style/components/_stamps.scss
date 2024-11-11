@@ -1,0 +1,88 @@
+.stamp {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 55px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    font-size: pxToRem(10);
+    overflow: hidden;
+    background-color: #152e49;
+    border: 1px solid #ddd;
+
+    &--active {
+        .stamp__company {
+            background-image: url('/assets/images/green-animation.gif');
+            background-size: cover;
+
+            &::before {
+                background-color: rgb(54 194 244 / 56%);
+                -webkit-backdrop-filter: saturate(180%) blur(10px);
+                backdrop-filter: saturate(180%) blur(10px);
+            }
+        }
+    }
+
+    &--inactive {
+        .stamp__company {
+            background-color: #d31515;
+        }
+    }
+
+    &--pending {
+        .stamp__company {
+            background-color: #ffb800;
+
+        }
+    }
+
+    &__company {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-transform: uppercase;
+        color: #fff;
+        height: 55px;
+        gap: 5px;
+
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        img {
+            height: 25px;
+            width: 25px;
+            z-index: 2;
+        }
+
+        span {
+            font-size: pxToRem(8);
+            font-weight: bold;
+            z-index: 2;
+        }
+    }
+
+    &__status {
+        font-size: pxToRem(7);
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        height: 15px;
+        background-color: #ebebeb;
+        color: #152e49;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
