@@ -22,7 +22,7 @@ export const Router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
           {
-            path: '/dashboard/*',
+            path: 'dashboard',
             element: <DashLayout />,
             children: dashboardRoutes,
           },

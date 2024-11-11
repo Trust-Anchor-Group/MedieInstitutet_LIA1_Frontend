@@ -2,11 +2,11 @@ import DashboardPage from '../pages/Dashboard/DashboardPage';
 import IdPage from '../pages/Dashboard/Identification/IdPage';
 import IdRegisterPage from '../pages/Dashboard/Identification/IdRegisterPage';
 import IdDetailsPage from '../pages/Dashboard/Identification/IdDetailsPage';
-import ContractsPage from '../pages/Dashboard/Contract/ContractsPage';
-import SettingsPage from '../pages/Dashboard/Settings/SettingsPage';
-import KeysPage from '../pages/Dashboard/Keys/KeysPage';
-import SignaturePage from '../pages/Dashboard/Signature/SignaturePage';
+import ContractsPage from '../pages/Dashboard/ContractsPage';
+import SettingsPage from '../pages/Dashboard/SettingsPage';
+import SignaturePage from '../pages/Dashboard/SignaturePage';
 import { DashContentLayout } from '../pages/Dashboard/DashContentLayout';
+import { ProfilePage } from '../pages/Dashboard/ProfilePage';
 
 export const dashboardRoutes = [
   {
@@ -18,6 +18,20 @@ export const dashboardRoutes = [
     },
   },
   {
+    path: 'profile',
+    element: <DashContentLayout />,
+    children: [
+      {
+        index: true,
+        element: <ProfilePage />,
+        handle: {
+          title: 'Profile',
+          icon: '',
+        },
+      },
+    ],
+  },
+  {
     path: 'id',
     element: <DashContentLayout />,
     children: [
@@ -25,7 +39,7 @@ export const dashboardRoutes = [
         index: true,
         element: <IdPage />,
         handle: {
-          title: 'Identification',
+          title: 'Identifications', // Title only in parent
           icon: '',
           subLinks: [
             { path: 'register', title: 'Create new ID', icon: 'Plus' },
@@ -73,20 +87,6 @@ export const dashboardRoutes = [
         element: <SettingsPage />,
         handle: {
           title: 'Settings',
-          icon: '',
-        },
-      },
-    ],
-  },
-  {
-    path: 'keys',
-    element: <DashContentLayout />,
-    children: [
-      {
-        index: true,
-        element: <KeysPage />,
-        handle: {
-          title: 'Keys',
           icon: '',
         },
       },
