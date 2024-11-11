@@ -33,10 +33,13 @@ const microLoanSchema = Yup.object().shape({
         .min(0, 'Commission cannot be negative')
         .max(100, 'Commission cannot exceed 100%'),
     borrower: Yup.string()
-        .required('Borrower username is required')
-        .min(4, 'Borrower username must be at least 4 characters'),
+        .nullable()
+        .transform((value) => (!value ? undefined : value))
+        .min(4, 'If provided, borrower username must be at least 4 characters'),
     lender: Yup.string()
-        .min(4, 'Lender username must be at least 4 characters')
+        .nullable()
+        .transform((value) => (!value ? undefined : value))
+        .min(4, 'If provided, lender username must be at least 4 characters')
 });
 
 export default microLoanSchema;
