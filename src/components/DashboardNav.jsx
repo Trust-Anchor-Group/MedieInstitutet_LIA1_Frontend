@@ -1,13 +1,29 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Fingerprint, User, Page, Settings, EditPencil } from 'iconoir-react';
+import {
+  Fingerprint,
+  User,
+  Page,
+  Settings,
+  EditPencil,
+  Computer,
+} from 'iconoir-react';
 
 export const DashboardNav = () => {
   return (
     <div className="dash-nav shadow__general">
       <ul>
         <li>
-          <NavLink to="/dashboard">
+          <NavLink to="/dashboard" end>
+            <span className="dash-nav__icon">
+              <Computer />
+            </span>
+            <span>Dashboard</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/dashboard/profile">
             <span className="dash-nav__icon">
               <User />
             </span>
@@ -16,7 +32,7 @@ export const DashboardNav = () => {
         </li>
 
         <li>
-          <NavLink to="/identifications">
+          <NavLink to="/dashboard/id">
             <span className="dash-nav__icon">
               <Fingerprint />
             </span>
@@ -25,7 +41,7 @@ export const DashboardNav = () => {
         </li>
 
         <li>
-          <NavLink to="/contracts">
+          <NavLink to="/dashboard/contracts">
             <span className="dash-nav__icon">
               <Page />
             </span>
@@ -34,7 +50,7 @@ export const DashboardNav = () => {
         </li>
 
         <li>
-          <NavLink to="/signature">
+          <NavLink to="/dashboard/signature">
             <span className="dash-nav__icon">
               <EditPencil />
             </span>
@@ -44,7 +60,7 @@ export const DashboardNav = () => {
         </li>
 
         <li>
-          <NavLink to="/settings">
+          <NavLink to="/dashboard/settings">
             <span className="dash-nav__icon">
               <Settings />
             </span>
