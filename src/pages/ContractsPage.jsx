@@ -1,4 +1,5 @@
 // src/pages/ContractsPage.jsx
+
 import React, { useEffect, useState } from 'react';
 import { LoadingScreen } from '../components/LoadingScreen';
 
@@ -10,18 +11,40 @@ const ContractsPage = () => {
   useEffect(() => {
     const fetchContracts = async () => {
       try {
-        const response = await fetch('/api/v1/contracts/available', {
-          credentials: 'include'
+        const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+        console.log('Fetching contracts from:', `${baseUrl}/api/v1/contracts/available`);
+        
+        const response = await fetch(`${baseUrl}/api/v1/contracts/available`, {
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         });
+        
+        console.log('Response status:', response.status);
+        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+        
+        // Check if response is actually JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          const text = await response.text();
+          console.error('Received non-JSON response:', text);
+          throw new Error('Expected JSON response but received HTML');
+        }
+
         const data = await response.json();
+        console.log('Response data:', data);
         
         if (data.success) {
           setContracts(data.data);
         } else {
+          console.error('API returned error:', data.message);
           setError(data.message);
         }
       } catch (error) {
-        setError('Failed to fetch contracts');
+        console.error('Error fetching contracts:', error);
+        setError('Failed to fetch contracts: ' + error.message);
       } finally {
         setIsLoading(false);
       }
