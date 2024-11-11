@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { getIds } from '../api/base-api.mjs';
 import { FingerprintLockCircle, NavArrowRight } from 'iconoir-react';
+import { NavLink } from 'react-router-dom';
 
 export const IdList = () => {
   const [ids, setIds] = useState([]);
+
+  const renderLabel = (state) => {
+    switch (state.toLowerCase()) {
+      case 'approved':
+        return 'Approved';
+      case 'created':
+        return 'Pending';
+      default:
+        return 'Canceled';
+    }
+  };
 
   useEffect(() => {
     const fetchIds = async () => {
@@ -20,34 +32,27 @@ export const IdList = () => {
 
   return (
     <div className="id-list">
-      {console.log('the state ids', ids)}
-      {ids.map((userId) => {
+      {ids.map((userId, index) => {
         return (
-          <button className="id-action-btn shadow__general">
+          <NavLink
+            to="/dashboard/id/details"
+            state={{ id: userId.id }}
+            className="btn__list id-action-btn shadow__general"
+            key={index}
+          >
             <span>
               <FingerprintLockCircle />
             </span>
             <span className="id-action-btn__content">{userId.id}</span>
-            <NavArrowRight />
-          </button>
+            <div className="id-action-btn__info">
+              <span className="id-action-btn__status">
+                {renderLabel(userId.status.state)}
+              </span>
+              <NavArrowRight />
+            </div>
+          </NavLink>
         );
       })}
     </div>
   );
 };
-
-{
-  /* <button
-onClick={async () => {
-  console.log('Get ids');
-  try {
-    const response = await getIds();
-    console.log('The IDs', response);
-  } catch (error) {
-    throw new Error(error.message || 'Error fetching IDs');
-  }
-}}
->
-Get ids
-</button> */
-}
