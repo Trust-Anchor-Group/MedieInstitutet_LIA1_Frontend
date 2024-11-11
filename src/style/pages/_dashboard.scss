@@ -1,1 +1,5 @@
-.dash-cta-menu {}
+.dash-cta-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
