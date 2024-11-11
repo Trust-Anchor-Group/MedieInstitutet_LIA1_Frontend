@@ -108,3 +108,55 @@ export const getIds = async (headers = {}) => {
         throw new Error(error.message || 'Error fetching IDs');
     }
 }
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const getIdAttr = async (headers = {}) => {
+    try {
+        return await HTTP.getRequest('/auth/id-req-attr');
+    } catch (error) {
+        throw new Error(error.message || 'Error fetching ID attributes');
+    }
+}
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const getAlgorithms = async (headers = {}) => {
+    try {
+        return await HTTP.getRequest('/auth/algorithms')
+    } catch (error) {
+        throw new Error(error.message || 'Error fetching algorithms');
+    }
+}
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const registerId = async (payload, headers = {}) => {
+    try {
+        return await HTTP.postRequest('/auth/id-register', payload);
+    } catch (error) {
+        throw new Error(error.message || 'Error registering ID');
+    }
+};
+
+/**
+ * @desc
+ * @param {Object} headers 
+ * @returns 
+ */
+export const getId = async (payload, headers = {}) => {
+    try {
+        return await HTTP.postRequest('/auth/id', payload);
+    } catch (error) {
+        throw new Error(error.message || 'Error fetching ID');
+    }
+}
