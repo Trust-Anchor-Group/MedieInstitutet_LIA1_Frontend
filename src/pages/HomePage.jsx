@@ -1,10 +1,11 @@
 import React from 'react';
 import { Banner } from '../components/Banner';
+import promoImage from '/public/assets/images/hero.jpg';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
-      <Banner imageSource="/public/assets/images/hero.jpg">
+      <Banner imageSource={promoImage}>
         <div className="banner__promo-card">
           <h1>
             Forget about programmers — creating contracts has never been easier!
@@ -15,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

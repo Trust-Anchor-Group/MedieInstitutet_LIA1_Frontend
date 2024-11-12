@@ -24,8 +24,6 @@ export const LoginForm = () => {
   const [feedback, setFeedback] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {}, [feedback]);
-
   const onSubmit = async (data) => {
     const { username, password } = data;
     try {

@@ -1,0 +1,33 @@
+.notification {
+    background-color: #ff9c22;
+    color: #fff;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    padding: 0 5px;
+    font-size: 13px;
+    line-height: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.message {
+    padding: 20px;
+    border-radius: 7px;
+
+    p {
+        margin-bottom: 0;
+
+        &:first-of-type:not(:last-of-type),
+        &+p {
+            margin-bottom: revert;
+        }
+    }
+
+    &__info {
+        background-color: var(--msg-info-bg-color);
+        color: var(--msg-info-color);
+        border: 1px solid var(--msg-info-border-color);
+    }
+}

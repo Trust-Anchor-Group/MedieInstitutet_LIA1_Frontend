@@ -11,10 +11,16 @@
 // This mixin provides a simple way to create responsive breakpoints
 // Usage: @include responsive(tablet) { ... }
 @mixin responsive($breakpoint) {
-  @if $breakpoint == tablet {
-    @media (max-width: $pageWidthTab) { @content; }
-  } @else if $breakpoint == mobile {
-    @media (max-width: $pageWidthMob) { @content; }
+  @if $breakpoint ==tablet {
+    @media (max-width: $pageWidthTab) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==mobile {
+    @media (max-width: $pageWidthMob) {
+      @content;
+    }
   }
 }
 
@@ -22,4 +28,17 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+/* Define a mixin for incremental sizing with decrease for higher levels */
+@mixin heading-sizes($base-size, $decrement) {
+  $current-size: $base-size;
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: pxToRem($current-size);
+    }
+
+    $current-size: $current-size - $decrement;
+  }
 }

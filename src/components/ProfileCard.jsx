@@ -8,7 +8,7 @@ export const ProfileCard = () => {
 
   return (
     <div className="profile-card">
-      <h2>Profile</h2>
+      <h3>Account details</h3>
       <ul>
         <li>
           <span>Username:</span>
@@ -25,6 +25,10 @@ export const ProfileCard = () => {
         <li>
           <span>Phone number:</span>
           <span>{userInfo?.phoneNr || 'N/A'}</span>
+        </li>
+        <li>
+          <span>ID</span>
+          <span>{userInfo?.id || 'N/A'}</span>
         </li>
       </ul>
     </div>

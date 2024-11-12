@@ -1,0 +1,26 @@
+.id-card {
+    position: relative;
+    padding: 40px;
+    border-radius: 7px;
+
+    background-color: #fff;
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 39px), repeating-linear-gradient(#f6f9ff55, #f6f9ff);
+
+    >ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        >li {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__label {
+        color: var(--secondary-color);
+        font-size: pxToRem(12);
+    }
+}

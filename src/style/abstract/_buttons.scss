@@ -1,3 +1,11 @@
+button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .btn {
     &__logout {
         color: var(--logout-color);
@@ -9,5 +17,35 @@
             box-shadow: inset 0px 0px 0px 1px var(--logout-color);
         }
 
+    }
+
+    &__cta,
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        padding: 0 20px;
+        gap: 10px;
+        background-color: var(--card-color);
+        border-radius: 7px;
+        width: max-content;
+        @extend .shadow__general;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            text-decoration: none;
+            transform: scale(1.015);
+        }
+    }
+
+    &__list {
+        height: 60px;
+    }
+
+    &__clear {
+        background-color: var(--card-color);
+        border: none;
+        box-shadow: none;
     }
 }

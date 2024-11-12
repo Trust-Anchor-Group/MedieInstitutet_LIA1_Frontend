@@ -3,29 +3,30 @@
 // Ensure the html and body elements take up the full height of the viewport
 html,
 body {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
+}
+
+html {
+  background-color: var(--background-color);
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
 
 // Set up basic styles for the body
 // Note: We're not setting font-family, line-height, etc. here as they're already in _typography.scss
 body {
-  background-color: var(--background-color);
-  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   color: var(--font-color);
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Ensures the body is at least the full height of the viewport
-  width: 100%;
 }
 
 // Styles for the root div in React applications
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // This ensures the React app takes up at least the full viewport height
+  gap: 40px;
   width: 100%;
   max-width: $pageWidthDesk; // Uses the desktop page width variable
   margin-right: auto;
@@ -42,7 +43,7 @@ main {
 }
 
 // Basic heading styles
-// Note: We're not setting font-size for h1 as it's already in _typography.scss
+h1,
 h2,
 h3,
 h4,

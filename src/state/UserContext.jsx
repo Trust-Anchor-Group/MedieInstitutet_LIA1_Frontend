@@ -23,12 +23,18 @@ export const UserProvider = ({ children }) => {
     }
   }, [isAuthenticated]);
 
+  const updateUserInfoId = (id) => {
+    setUserInfo({ ...userInfo, id });
+  };
+
   const resetUserState = () => {
     setUserInfo(initialState.userInfo);
   };
 
   return (
-    <UserContext.Provider value={{ userInfo, resetUserState }}>
+    <UserContext.Provider
+      value={{ userInfo, resetUserState, updateUserInfoId }}
+    >
       {children}
     </UserContext.Provider>
   );
