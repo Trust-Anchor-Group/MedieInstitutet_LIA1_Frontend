@@ -41,9 +41,7 @@ export const dashboardRoutes = [
         handle: {
           title: 'Identities', // Title only in parent
           icon: '',
-          subLinks: [
-            { path: 'register', title: 'Create new ID', icon: 'Plus' },
-          ],
+          subLinks: [{ path: 'register', title: 'New identity', icon: 'Plus' }],
         },
       },
       {
