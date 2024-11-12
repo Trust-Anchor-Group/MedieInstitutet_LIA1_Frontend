@@ -39,7 +39,7 @@ export const dashboardRoutes = [
         index: true,
         element: <IdPage />,
         handle: {
-          title: 'Identifications', // Title only in parent
+          title: 'Identities', // Title only in parent
           icon: '',
           subLinks: [
             { path: 'register', title: 'Create new ID', icon: 'Plus' },

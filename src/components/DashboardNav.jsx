@@ -36,7 +36,7 @@ export const DashboardNav = () => {
             <span className="dash-nav__icon">
               <Fingerprint />
             </span>
-            <span>Identifications</span>
+            <span>Identities</span>
           </NavLink>
         </li>
 

@@ -5,14 +5,14 @@ import { formatDate } from '../utilities/formatDate';
 import { Stamp } from './Stamp';
 
 export const IdCard = ({ id }) => {
-  const [identification, setIdentification] = useState({});
+  const [identity, setidentity] = useState({});
 
   useEffect(() => {
     const fetchId = async () => {
       try {
         const response = await getId({ legalId: id });
         if (response.success) {
-          setIdentification(response.data.Identity);
+          setidentity(response.data.Identity);
         }
       } catch (error) {}
     };
@@ -32,25 +32,24 @@ export const IdCard = ({ id }) => {
 
   return (
     <div className="id-card shadow__general">
-      {identification?.status?.state &&
-        renderStamp(identification?.status?.state)}
+      {identity?.status?.state && renderStamp(identity?.status?.state)}
       <ul>
-        {identification.status && (
+        {identity.status && (
           <li>
             <span className="id-card__label">Created</span>
             <span className="id-card__value">
-              {formatDate(identification.status.created)}
+              {formatDate(identity.status.created)}
             </span>
           </li>
         )}
-        {identification.id && (
+        {identity.id && (
           <li>
-            <span className="id-card__label">Identification</span>
-            <span className="id-card__value">{identification.id}</span>
+            <span className="id-card__label">Identity</span>
+            <span className="id-card__value">{identity.id}</span>
           </li>
         )}
-        {identification.property &&
-          identification.property.map((property, index) => {
+        {identity.property &&
+          identity.property.map((property, index) => {
             return (
               <li key={index}>
                 <span className="id-card__label">

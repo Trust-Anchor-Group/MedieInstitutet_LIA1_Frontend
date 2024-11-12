@@ -73,9 +73,9 @@ export const IdForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="message message__info">
         <p>
-          You are required to create a unique identification (ID). This ID will
-          be used to verify your identity within our system. It is crucial that
-          all information provided is accurate, as it will be used for official
+          You are required to create a unique identity (ID). This ID will be
+          used to verify your identity within our system. It is crucial that all
+          information provided is accurate, as it will be used for official
           identification purposes.
         </p>
       </div>
