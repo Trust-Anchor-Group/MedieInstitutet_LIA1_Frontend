@@ -22,40 +22,33 @@ const MicroLoan = () => {
     };
 
     const handleSubmit = async (data) => {
-        console.log('handleSubmit called with data:', data); // ! bug logging
-        console.log('Frontend - roles being send:', {
-            creator: "2eaa2cb7-b249-6164-1c15-694a2b068140@legal.mateo.lab.tagroot.io",
-            lender: data.lender || "",
-            borrower: data.borrower || "",
-            trustProvider: "2dc21fb3-87d7-1614-9414-9c6b3740ce78@legal.lab.tagroot.io"
-        });
+        console.log('handleSubmit called with data:', data);
 
         try {
+            // Structure contract data with roles
+            const roles = {};
+            
+            // If all legal IDs are filled, use them
+            if (data.creatorId && data.borrowerId && data.lenderId && data.trustProviderId) {
+                roles.creator = data.creatorId;
+                roles.borrower = data.borrowerId;
+                roles.lender = data.lenderId;
+                roles.trustProvider = data.trustProviderId;
+            }
+            // Otherwise, all should be empty as per schema validation
+            
+            const contractData = {
+                ...data,
+                roles
+            };         
 
-                // ! Temporary hardcoding of roles until legal identities are available in context
-                const roles = {
-                    creator: "2eaa2cb7-b249-6164-1c15-694a2b068140@legal.mateo.lab.tagroot.io",
-                    trustProvider: "2dc21fb3-87d7-1614-9414-9c6b3740ce78@legal.lab.tagroot.io"
-                };
-    
-                // Only add lender and borrower if they have valid values
-                if (data.lender && data.lender.trim()) {
-                    roles.lender = data.lender.trim();
-                }
-                if (data.borrower && data.borrower.trim()) {
-                    roles.borrower = data.borrower.trim();
-                }
-    
-                const contractData = {
-                    ...data,
-                    roles
-                };         
+            // Remove the individual ID fields as they're now in roles object
+            delete contractData.creatorId;
+            delete contractData.borrowerId;
+            delete contractData.lenderId;
+            delete contractData.trustProviderId;
 
-            // Remove the individual role fields as they're now in the roles object
-            delete contractData.lender;
-            delete contractData.borrower;
-
-            console.log('Sending contract data:', contractData); // ! bug logging
+            console.log('Sending contract data:', contractData);
 
             const response = await createMicroLoan(contractData);
             console.log("Complete response object:", {

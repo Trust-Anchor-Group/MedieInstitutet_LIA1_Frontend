@@ -155,31 +155,61 @@ const MicroLoanForm = ({ onSubmit, onCancel }) => {
                 </label>
 
                 <label className="form__field">
-                    <span>Borrower Username:</span>
+                    <span>Creator Legal ID:</span>
                     <input
                         type="text"
-                        className={errors.borrower ? 'error' : ''}
-                        {...register('borrower')}
+                        className={errors.creatorId ? 'error' : ''}
+                        {...register('creatorId')}
                     />
-                    {errors.borrower && (
+                    {errors.creatorId && (
                         <span className="form__msg form__msg-error">
                             <WarningCircle />
-                            <span>{errors.borrower.message}</span>
+                            <span>{errors.creatorId.message}</span>
                         </span>
                     )}
                 </label>
 
                 <label className="form__field">
-                    <span>Lender Username (optional):</span>
+                    <span>Borrower Legal ID:</span>
                     <input
                         type="text"
-                        className={errors.lender ? 'error' : ''}
-                        {...register('lender')}
+                        className={errors.borrowerId ? 'error' : ''}
+                        {...register('borrowerId')}
                     />
-                    {errors.lender && (
+                    {errors.borrowerId && (
                         <span className="form__msg form__msg-error">
                             <WarningCircle />
-                            <span>{errors.lender.message}</span>
+                            <span>{errors.borrowerId.message}</span>
+                        </span>
+                    )}
+                </label>
+
+                <label className="form__field">
+                    <span>Lender Legal ID:</span>
+                    <input
+                        type="text"
+                        className={errors.lenderId ? 'error' : ''}
+                        {...register('lenderId')}
+                    />
+                    {errors.lenderId && (
+                        <span className="form__msg form__msg-error">
+                            <WarningCircle />
+                            <span>{errors.lenderId.message}</span>
+                        </span>
+                    )}
+                </label>
+
+                <label className="form__field">
+                    <span>Trust Provider Legal ID:</span>
+                    <input
+                        type="text"
+                        className={errors.trustProviderId ? 'error' : ''}
+                        {...register('trustProviderId')}
+                    />
+                    {errors.trustProviderId && (
+                        <span className="form__msg form__msg-error">
+                            <WarningCircle />
+                            <span>{errors.trustProviderId.message}</span>
                         </span>
                     )}
                 </label>
