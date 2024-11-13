@@ -68,6 +68,14 @@ const ContractsPage = () => {
 
   const formatContractInfo = (contract) => {
     const parameters = contract.Contract?.parameters;
+    const signatures = contract.Contract?.signature || [];
+    
+    // Get signing status for each role
+    const getRoleStatus = (roleName) => {
+      const isSigned = signatures.some(sig => sig.role === roleName);
+      return isSigned;
+    };
+  
     return {
       technicalInfo: {
         id: contract.Contract?.id,
@@ -76,6 +84,12 @@ const ContractsPage = () => {
         duration: contract.Contract?.duration,
         visibility: contract.Contract?.visibility,
         canActAsTemplate: contract.Contract?.canActAsTemplate,
+      },
+      signingStatus: {
+        creator: getRoleStatus('Creator'),
+        lender: getRoleStatus('Lender'),
+        borrower: getRoleStatus('Borrower'),
+        trustProvider: getRoleStatus('TrustProvider')
       },
       loanInfo: {
         amount:
@@ -164,6 +178,36 @@ const ContractsPage = () => {
                     <div className="loan-detail">
                       <span className="label">Payment Interval:</span>
                       <span className="value">{info.loanInfo.installmentInterval}</span>
+                    </div>
+                  </div>
+
+                  <div className="signing-status">
+                    <h4 className="text-lg font-medium mb-2">Signing Status:</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="signing-role">
+                        <span className="label">Creator:</span>
+                        <span className={`status ${info.signingStatus.creator ? 'status--signed' : 'status--unsigned'}`}>
+                          ({info.signingStatus.creator ? 'Signed' : 'Unsigned'})
+                        </span>
+                      </div>
+                      <div className="signing-role">
+                        <span className="label">Lender:</span>
+                        <span className={`status ${info.signingStatus.lender ? 'status--signed' : 'status--unsigned'}`}>
+                          ({info.signingStatus.lender ? 'Signed' : 'Unsigned'})
+                        </span>
+                      </div>
+                      <div className="signing-role">
+                        <span className="label">Borrower:</span>
+                        <span className={`status ${info.signingStatus.borrower ? 'status--signed' : 'status--unsigned'}`}>
+                          ({info.signingStatus.borrower ? 'Signed' : 'Unsigned'})
+                        </span>
+                      </div>
+                      <div className="signing-role">
+                        <span className="label">Trust Provider:</span>
+                        <span className={`status ${info.signingStatus.trustProvider ? 'status--signed' : 'status--unsigned'}`}>
+                          ({info.signingStatus.trustProvider ? 'Signed' : 'Unsigned'})
+                        </span>
+                      </div>
                     </div>
                   </div>
                   

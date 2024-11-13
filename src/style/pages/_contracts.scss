@@ -190,6 +190,44 @@
     .btn-sm {
       padding: pxToRem(4) pxToRem(12);
       font-size: pxToRem(14);
+      cursor: pointer; 
+    }
+  }
+}
+
+.signing-status {
+  margin: pxToRem(16) 0;
+  padding: pxToRem(16);
+  border: 1px solid var(--border-color);
+  border-radius: pxToRem(4);
+
+  h4 {
+    color: var(--font-color);
+    margin-bottom: pxToRem(8);
+  }
+
+  .signing-role {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: pxToRem(4) 0;
+
+    .label {
+      color: var(--font-color-secondary);
+      font-size: pxToRem(14);
+    }
+
+    .status {
+      font-size: pxToRem(14);
+      font-weight: 500;
+      
+      &--signed {
+        color: var(--secondary-color);
+      }
+      
+      &--unsigned {
+        color: var(--logout-color);
+      }
     }
   }
 }
