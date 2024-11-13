@@ -1,13 +1,15 @@
 // src/pages/ContractsPage.jsx
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { Info } from 'lucide-react';  // Changed to lucide-react
+import { Info } from 'lucide-react';
 
 const ContractsPage = () => {
   const [contracts, setContracts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchContracts = async () => {
@@ -60,7 +62,9 @@ const ContractsPage = () => {
     fetchContracts();
   }, []);
 
-  if (isLoading) return <LoadingScreen />;
+  const handleSignContract = (contractId) => {
+    navigate(`/contracts/sign/${contractId}`);
+  };
 
   const formatContractInfo = (contract) => {
     const parameters = contract.Contract?.parameters;
@@ -97,6 +101,8 @@ const ContractsPage = () => {
       },
     };
   };
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <div className="page__container">
@@ -161,10 +167,18 @@ const ContractsPage = () => {
                     </div>
                   </div>
                   
-                  <div className="contract-status">
-                    <span className={`status status--${contract.Contract?.status?.state?.toLowerCase() || 'pending'}`}>
-                      {contract.Contract?.status?.state || 'Pending'}
-                    </span>
+                  <div className="contract-card__actions">
+                    <div className="contract-status">
+                      <span className={`status status--${contract.Contract?.status?.state?.toLowerCase() || 'pending'}`}>
+                        {contract.Contract?.status?.state || 'Pending'}
+                      </span>
+                    </div>
+                    <button
+                      className="btn-primary btn-sm"
+                      onClick={() => handleSignContract(info.technicalInfo.id)}
+                    >
+                      Sign
+                    </button>
                   </div>
                 </div>
               </div>

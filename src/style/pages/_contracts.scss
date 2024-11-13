@@ -178,4 +178,18 @@
       margin-top: pxToRem(16);
     }
   }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: pxToRem(16);
+    padding-top: pxToRem(16);
+    border-top: 1px solid var(--border-color);
+
+    .btn-sm {
+      padding: pxToRem(4) pxToRem(12);
+      font-size: pxToRem(14);
+    }
+  }
 }
