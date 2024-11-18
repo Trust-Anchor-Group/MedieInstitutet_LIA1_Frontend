@@ -231,3 +231,32 @@
     }
   }
 }
+
+.header-icons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.contract-card__header {
+  .info-icon {
+      &:hover .info-tooltip {
+          display: block;
+      }
+      
+      .info-tooltip {
+          right: 0;
+          min-width: pxToRem(200);
+          
+          p {
+              margin: pxToRem(4) 0;
+              font-size: pxToRem(12);
+              
+              strong {
+                  font-weight: 600;
+                  margin-right: pxToRem(4);
+              }
+          }
+      }
+  }
+}

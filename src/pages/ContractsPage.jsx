@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { Info } from 'lucide-react';
+import { Info, Users } from 'lucide-react';
 
 const ContractsPage = () => {
   const [contracts, setContracts] = useState([]);
@@ -69,6 +69,29 @@ const ContractsPage = () => {
   const formatContractInfo = (contract) => {
     const parameters = contract.Contract?.parameters;
     const signatures = contract.Contract?.signature || [];
+    const parts = contract.Contract?.parts;
+
+    // Function to format legal ID
+    const formatLegalId = (id) => {
+      if (!id) return 'Open to anyone';
+      const firstFour = id.substring(0, 4);
+      return `${firstFour}***`;
+    };
+    
+    // Get parts information
+    const partsInfo = {
+        creator: 'Open to anyone',
+        lender: 'Open to anyone',
+        borrower: 'Open to anyone',
+        trustProvider: 'Open to any Valid TP'
+    };
+
+    if (parts?.part) {
+        parts.part.forEach(part => {
+          const role = part.role === 'TrustProvider' ? 'trustProvider' : part.role.toLowerCase();
+            partsInfo[role] = formatLegalId(part.legalId);
+        });
+    }
     
     // Get signing status for each role
     const getRoleStatus = (roleName) => {
@@ -85,6 +108,7 @@ const ContractsPage = () => {
         visibility: contract.Contract?.visibility,
         canActAsTemplate: contract.Contract?.canActAsTemplate,
       },
+      partsInfo,
       signingStatus: {
         creator: getRoleStatus('Creator'),
         lender: getRoleStatus('Lender'),
@@ -138,20 +162,31 @@ const ContractsPage = () => {
               <div key={index} className="contract-card">
                 <div className="contract-card__header">
                   <h3>
-                    {contract.Contract?.Create?.FriendlyName?.String?.value || 'Contract'}
-                    {isTemplate && <span className="template-badge">Template</span>}
+                      {contract.Contract?.Create?.FriendlyName?.String?.value || 'Contract'}
+                      {isTemplate && <span className="template-badge">Template</span>}
                   </h3>
-                  <div className="info-icon" title="Contract Details">
-                    <Info size={20} />
-                    <div className="info-tooltip">
-                      <p><strong>ID:</strong> {info.technicalInfo.id}</p>
-                      <p><strong>Duration:</strong> {info.technicalInfo.duration}</p>
-                      <p><strong>Archive Required:</strong> {info.technicalInfo.archiveReq}</p>
-                      <p><strong>Archive Optional:</strong> {info.technicalInfo.archiveOpt}</p>
-                      <p><strong>Visibility:</strong> {info.technicalInfo.visibility}</p>
-                    </div>
+                  <div className="header-icons">
+                      <div className="info-icon" title="Contract Details">
+                        <Info size={20} />
+                        <div className="info-tooltip">
+                            <p><strong>ID:</strong> {info.technicalInfo.id}</p>
+                            <p><strong>Duration:</strong> {info.technicalInfo.duration}</p>
+                            <p><strong>Archive Required:</strong> {info.technicalInfo.archiveReq}</p>
+                            <p><strong>Archive Optional:</strong> {info.technicalInfo.archiveOpt}</p>
+                            <p><strong>Visibility:</strong> {info.technicalInfo.visibility}</p>
+                        </div>
+                      </div>
+                      <div className="info-icon" title="Participants">
+                        <Users size={20} />
+                        <div className="info-tooltip">
+                            <p><strong>Creator:</strong> {info.partsInfo.creator}</p>
+                            <p><strong>Lender:</strong> {info.partsInfo.lender}</p>
+                            <p><strong>Borrower:</strong> {info.partsInfo.borrower}</p>
+                            <p><strong>Trust Provider:</strong> {info.partsInfo.trustProvider}</p>
+                        </div>
+                      </div>
                   </div>
-                </div>
+              </div>
 
                 <div className="contract-card__content">
                   <div className="loan-details">
