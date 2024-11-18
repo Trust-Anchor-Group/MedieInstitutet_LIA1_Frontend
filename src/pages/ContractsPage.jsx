@@ -96,8 +96,14 @@ const ContractsPage = () => {
 
     // Get signing status for each role
     const getRoleStatus = (roleName) => {
-      const isSigned = signatures.some(sig => sig.role === roleName);
-      return isSigned;
+      const signatures = contract.Contract?.signature;
+      // Handle both array and single signature cases
+      if (Array.isArray(signatures)) {
+        return signatures.some(sig => sig.role === roleName);
+      } else if (signatures && typeof signatures === 'object') {
+        return signatures.role === roleName;
+      }
+      return false;
     };
 
     return {

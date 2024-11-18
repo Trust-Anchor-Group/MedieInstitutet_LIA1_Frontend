@@ -69,7 +69,7 @@ const MicroLoan = () => {
                 setTimeout(() => {
                     setShowForm(false);
                     navigate('/dashboard');
-                }, 2000);
+                }, 5000);
             }
         } catch (error) {
             console.error('Error in handleSubmit:', error);
