@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { Info, Users } from 'lucide-react';
+import { Info, Users, Copy, Check } from 'lucide-react';
 
 const ContractsPage = () => {
   const [contracts, setContracts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [copiedId, setCopiedId] = useState(null);
 
   useEffect(() => {
     const fetchContracts = async () => {
@@ -77,28 +78,28 @@ const ContractsPage = () => {
       const firstFour = id.substring(0, 4);
       return `${firstFour}***`;
     };
-    
+
     // Get parts information
     const partsInfo = {
-        creator: 'Open to anyone',
-        lender: 'Open to anyone',
-        borrower: 'Open to anyone',
-        trustProvider: 'Open to any Valid TP'
+      creator: 'Open to anyone',
+      lender: 'Open to anyone',
+      borrower: 'Open to anyone',
+      trustProvider: 'Open to any Valid TP'
     };
 
     if (parts?.part) {
-        parts.part.forEach(part => {
-          const role = part.role === 'TrustProvider' ? 'trustProvider' : part.role.toLowerCase();
-            partsInfo[role] = formatLegalId(part.legalId);
-        });
+      parts.part.forEach(part => {
+        const role = part.role === 'TrustProvider' ? 'trustProvider' : part.role.toLowerCase();
+        partsInfo[role] = formatLegalId(part.legalId);
+      });
     }
-    
+
     // Get signing status for each role
     const getRoleStatus = (roleName) => {
       const isSigned = signatures.some(sig => sig.role === roleName);
       return isSigned;
     };
-  
+
     return {
       technicalInfo: {
         id: contract.Contract?.id,
@@ -142,11 +143,22 @@ const ContractsPage = () => {
 
   if (isLoading) return <LoadingScreen />;
 
+  // Copy ID to clipboard on click in (i) icon
+  const handleCopyId = async (id) => {
+    try {
+      await navigator.clipboard.writeText(id);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000); // Reset after 2 seconds
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   return (
     <div className="page__container">
       <section className="contracts__section">
         <h1>Available Contracts</h1>
-        
+
         {error && (
           <div className="feedback feedback-error">
             {error}
@@ -157,36 +169,50 @@ const ContractsPage = () => {
           {contracts.map((contract, index) => {
             const info = formatContractInfo(contract);
             const isTemplate = contract.Contract?.canActAsTemplate === 'true';
-            
+
             return (
               <div key={index} className="contract-card">
                 <div className="contract-card__header">
                   <h3>
-                      {contract.Contract?.Create?.FriendlyName?.String?.value || 'Contract'}
-                      {isTemplate && <span className="template-badge">Template</span>}
+                    {contract.Contract?.Create?.FriendlyName?.String?.value || 'Contract'}
+                    {isTemplate && <span className="template-badge">Template</span>}
                   </h3>
                   <div className="header-icons">
-                      <div className="info-icon" title="Contract Details">
-                        <Info size={20} />
-                        <div className="info-tooltip">
-                            <p><strong>ID:</strong> {info.technicalInfo.id}</p>
-                            <p><strong>Duration:</strong> {info.technicalInfo.duration}</p>
-                            <p><strong>Archive Required:</strong> {info.technicalInfo.archiveReq}</p>
-                            <p><strong>Archive Optional:</strong> {info.technicalInfo.archiveOpt}</p>
-                            <p><strong>Visibility:</strong> {info.technicalInfo.visibility}</p>
-                        </div>
+                    <div className="info-icon" title="Contract Details">
+                      <Info size={20} />
+                      <div className="info-tooltip">
+                        <p>
+                          <strong>ID:</strong>
+                          <span
+                            onClick={() => handleCopyId(info.technicalInfo.id)}
+                            className="contract-id-copy"
+                            title="Click to copy"
+                          >
+                            {info.technicalInfo.id}
+                            {copiedId === info.technicalInfo.id ? (
+                              <Check size={14} className="copy-icon" />
+                            ) : (
+                              <Copy size={14} className="copy-icon" />
+                            )}
+                          </span>
+                        </p>
+                        <p><strong>Duration:</strong> {info.technicalInfo.duration}</p>
+                        <p><strong>Archive Required:</strong> {info.technicalInfo.archiveReq}</p>
+                        <p><strong>Archive Optional:</strong> {info.technicalInfo.archiveOpt}</p>
+                        <p><strong>Visibility:</strong> {info.technicalInfo.visibility}</p>
                       </div>
-                      <div className="info-icon" title="Participants">
-                        <Users size={20} />
-                        <div className="info-tooltip">
-                            <p><strong>Creator:</strong> {info.partsInfo.creator}</p>
-                            <p><strong>Lender:</strong> {info.partsInfo.lender}</p>
-                            <p><strong>Borrower:</strong> {info.partsInfo.borrower}</p>
-                            <p><strong>Trust Provider:</strong> {info.partsInfo.trustProvider}</p>
-                        </div>
+                    </div>
+                    <div className="info-icon" title="Participants">
+                      <Users size={20} />
+                      <div className="info-tooltip">
+                        <p><strong>Creator:</strong> {info.partsInfo.creator}</p>
+                        <p><strong>Lender:</strong> {info.partsInfo.lender}</p>
+                        <p><strong>Borrower:</strong> {info.partsInfo.borrower}</p>
+                        <p><strong>Trust Provider:</strong> {info.partsInfo.trustProvider}</p>
                       </div>
+                    </div>
                   </div>
-              </div>
+                </div>
 
                 <div className="contract-card__content">
                   <div className="loan-details">
@@ -245,7 +271,7 @@ const ContractsPage = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="contract-card__actions">
                     <div className="contract-status">
                       <span className={`status status--${contract.Contract?.status?.state?.toLowerCase() || 'pending'}`}>
