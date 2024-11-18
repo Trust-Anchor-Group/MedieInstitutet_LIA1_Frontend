@@ -234,12 +234,15 @@
 
 .header-icons {
   display: flex;
-  gap: 0.5rem;
+  gap: pxToRem(16); // Increased from 0.5rem
   align-items: center;
 }
 
 .contract-card__header {
   .info-icon {
+      padding: pxToRem(8);
+      margin: pxToRem(-8);
+      
       &:hover .info-tooltip {
           display: block;
       }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { Info, Users, Copy, Check } from 'lucide-react';
+import { Info, Users, Copy, Check, FlipHorizontal2 } from 'lucide-react';
 
 const ContractsPage = () => {
   const [contracts, setContracts] = useState([]);
@@ -181,6 +181,7 @@ const ContractsPage = () => {
                     <div className="info-icon" title="Contract Details">
                       <Info size={20} />
                       <div className="info-tooltip">
+                        <h2>Contract Details</h2>
                         <p>
                           <strong>ID:</strong>
                           <span
@@ -202,9 +203,10 @@ const ContractsPage = () => {
                         <p><strong>Visibility:</strong> {info.technicalInfo.visibility}</p>
                       </div>
                     </div>
-                    <div className="info-icon" title="Participants">
+                    <div className="info-icon" title="Assigned Participants">
                       <Users size={20} />
                       <div className="info-tooltip">
+                        <h2>Assigned Participants</h2>
                         <p><strong>Creator:</strong> {info.partsInfo.creator}</p>
                         <p><strong>Lender:</strong> {info.partsInfo.lender}</p>
                         <p><strong>Borrower:</strong> {info.partsInfo.borrower}</p>
