@@ -8,6 +8,7 @@ import { passwordSchema } from '../validation/schemas/generalSchemas';
 import UserContext from '../state/UserContext';
 import { TailSpin } from 'react-loader-spinner';
 import labelMapping from '../utilities/labelMapping';
+import { MessageBox } from './MessageBox';
 
 export const IdForm = () => {
   const { userInfo, updateUserInfoId } = useContext(UserContext);
@@ -71,14 +72,14 @@ export const IdForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="message message__info">
+      <MessageBox type="info">
         <p>
           You are required to create a unique identity (ID). This ID will be
           used to verify your identity within our system. It is crucial that all
           information provided is accurate, as it will be used for official
           identification purposes.
         </p>
-      </div>
+      </MessageBox>
       <div className="form__header">
         {feedback.message && (
           <div className={`form__feedback form__feedback-${feedback.type}`}>
@@ -87,7 +88,7 @@ export const IdForm = () => {
         )}
       </div>
 
-      {idAttributes.map((attr, index) => {
+      {idAttributes?.map((attr, index) => {
         return (
           <label key={index}>
             <span>{labelMapping[attr] || attr}</span>
