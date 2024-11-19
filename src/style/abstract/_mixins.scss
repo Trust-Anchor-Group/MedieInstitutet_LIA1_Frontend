@@ -1,5 +1,4 @@
 // src/style/abstract/_mixins.scss
-
 // This mixin centers content using flexbox, if we remember to use it :)
 // Usage: @include flex-center;
 @mixin flex-center {
@@ -11,34 +10,59 @@
 // This mixin provides a simple way to create responsive breakpoints
 // Usage: @include responsive(tablet) { ... }
 @mixin responsive($breakpoint) {
-  @if $breakpoint ==tablet {
-    @media (max-width: $pageWidthTab) {
-      @content;
-    }
-  }
-
-  @else if $breakpoint ==mobile {
-    @media (max-width: $pageWidthMob) {
-      @content;
-    }
+  @if $breakpoint == tablet {
+      @media (max-width: $pageWidthTab) { @content; }
+  } @else if $breakpoint == mobile {
+      @media (max-width: $pageWidthMob) { @content; }
   }
 }
 
+// This mixin aligns content to the end using flexbox while maintaining vertical centering
+// Usage: @include flex-end;
 @mixin flex-end {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-/* Define a mixin for incremental sizing with decrease for higher levels */
+// This mixin generates heading sizes with decremental values
+// Usage: @include heading-sizes(32, 4);
 @mixin heading-sizes($base-size, $decrement) {
   $current-size: $base-size;
-
   @for $i from 1 through 6 {
-    h#{$i} {
-      font-size: pxToRem($current-size);
-    }
-
-    $current-size: $current-size - $decrement;
+      h#{$i} {
+          font-size: pxToRem($current-size);
+      }
+      $current-size: $current-size - $decrement;
   }
+}
+
+// This mixin provides consistent card styling across the application
+// Usage: @include card-base;
+@mixin card-base {
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+}
+
+// This mixin adds a subtle lift animation on hover for interactive elements
+// Usage: @include hover-lift;
+@mixin hover-lift {
+  transition: transform 0.2s ease;
+  &:hover {
+      transform: translateY(pxToRem(-2));
+  }
+}
+
+// This mixin provides consistent tooltip styling and positioning
+// Usage: @include tooltip-base;
+@mixin tooltip-base {
+  position: absolute;
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: pxToRem(4);
+  padding: pxToRem(12);
+  box-shadow: 0 pxToRem(4) pxToRem(6) rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }

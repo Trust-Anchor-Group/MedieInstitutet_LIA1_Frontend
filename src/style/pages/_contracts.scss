@@ -1,3 +1,6 @@
+// src/style/pages/_contracts.scss
+
+// Page Layout
 .contracts {
   &__section {
     padding: pxToRem(32);
@@ -7,7 +10,7 @@
     h1 {
       margin-bottom: pxToRem(32);
       color: var(--font-color);
-      font-size: pxToRem(24);
+      font-size: $header-font-size;
     }
   }
 
@@ -16,23 +19,17 @@
     grid-template-columns: repeat(auto-fill, minmax(pxToRem(300), 1fr));
     gap: pxToRem(24);
 
-    @media (max-width: $pageWidthTab) {
+    @include responsive(tablet) {
       grid-template-columns: 1fr;
       gap: pxToRem(16);
     }
   }
 }
 
+// Contract Card
 .contract-card {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: pxToRem(8);
-  padding: pxToRem(24);
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(pxToRem(-2));
-  }
+  @include card-base;
+  @include hover-lift;
 
   &__header {
     margin-bottom: pxToRem(16);
@@ -42,13 +39,13 @@
 
     h3 {
       color: var(--font-color);
-      font-size: pxToRem(18);
+      font-size: $card-title-size;
       display: flex;
       align-items: center;
     }
 
     .template-badge {
-      font-size: pxToRem(12);
+      font-size: $small-font-size;
       background: var(--status-pending-color);
       padding: pxToRem(2) pxToRem(6);
       border-radius: pxToRem(4);
@@ -58,6 +55,8 @@
     .info-icon {
       position: relative;
       cursor: pointer;
+      padding: pxToRem(8);
+      margin: pxToRem(-8);
 
       &:hover .info-tooltip {
         display: block;
@@ -65,20 +64,20 @@
 
       .info-tooltip {
         display: none;
-        position: absolute;
+        @include tooltip-base;
         right: 0;
+        min-width: pxToRem(200);
         top: 100%;
-        background: var(--card-color);
-        border: 1px solid var(--border-color);
-        border-radius: pxToRem(4);
-        padding: pxToRem(12);
         width: pxToRem(300);
-        box-shadow: 0 pxToRem(4) pxToRem(6) rgba(0, 0, 0, 0.1);
-        z-index: 10;
 
         p {
           margin: pxToRem(4) 0;
-          font-size: pxToRem(12);
+          font-size: $small-font-size;
+
+          strong {
+            font-weight: 600;
+            margin-right: pxToRem(4);
+          }
         }
       }
     }
@@ -106,7 +105,7 @@
 
         .label {
           color: var(--font-color-secondary);
-          font-size: pxToRem(14);
+          font-size: $detail-font-size;
         }
 
         .value {
@@ -119,7 +118,7 @@
       display: inline-block;
       padding: pxToRem(4) pxToRem(8);
       border-radius: pxToRem(4);
-      font-size: pxToRem(14);
+      font-size: $detail-font-size;
 
       &--success {
         background: var(--status-success-color);
@@ -136,7 +135,7 @@
 
     .contract-id {
       font-family: monospace;
-      font-size: pxToRem(14);
+      font-size: $detail-font-size;
       color: var(--font-color-secondary);
       opacity: 0.8;
     }
@@ -165,7 +164,7 @@
 
           span.required {
             color: var(--status-error-color);
-            font-size: pxToRem(12);
+            font-size: $small-font-size;
             margin-left: pxToRem(4);
           }
         }
@@ -173,8 +172,7 @@
     }
 
     .contract-status {
-      display: flex;
-      justify-content: flex-end;
+      @include flex-end;
       margin-top: pxToRem(16);
     }
   }
@@ -189,7 +187,7 @@
 
     .btn-sm {
       padding: pxToRem(4) pxToRem(12);
-      font-size: pxToRem(14);
+      font-size: $detail-font-size;
       cursor: pointer; 
     }
   }
@@ -198,8 +196,7 @@
 .signing-status {
   margin: pxToRem(16) 0;
   padding: pxToRem(16);
-  border: 1px solid var(--border-color);
-  border-radius: pxToRem(4);
+  @include card-base;
 
   h4 {
     color: var(--font-color);
@@ -214,11 +211,11 @@
 
     .label {
       color: var(--font-color-secondary);
-      font-size: pxToRem(14);
+      font-size: $detail-font-size;
     }
 
     .status {
-      font-size: pxToRem(14);
+      font-size: $detail-font-size;
       font-weight: 500;
       
       &--signed {
@@ -234,32 +231,6 @@
 
 .header-icons {
   display: flex;
-  gap: pxToRem(16); // Increased from 0.5rem
+  gap: pxToRem(16);
   align-items: center;
-}
-
-.contract-card__header {
-  .info-icon {
-      padding: pxToRem(8);
-      margin: pxToRem(-8);
-      
-      &:hover .info-tooltip {
-          display: block;
-      }
-      
-      .info-tooltip {
-          right: 0;
-          min-width: pxToRem(200);
-          
-          p {
-              margin: pxToRem(4) 0;
-              font-size: pxToRem(12);
-              
-              strong {
-                  font-weight: 600;
-                  margin-right: pxToRem(4);
-              }
-          }
-      }
-  }
 }
