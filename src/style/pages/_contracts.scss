@@ -1,0 +1,236 @@
+// src/style/pages/_contracts.scss
+
+// Page Layout
+.contracts {
+  &__section {
+    padding: pxToRem(32);
+    max-width: $pageWidthDesk;
+    margin: 0 auto;
+
+    h1 {
+      margin-bottom: pxToRem(32);
+      color: var(--font-color);
+      font-size: $header-font-size;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(pxToRem(300), 1fr));
+    gap: pxToRem(24);
+
+    @include responsive(tablet) {
+      grid-template-columns: 1fr;
+      gap: pxToRem(16);
+    }
+  }
+}
+
+// Contract Card
+.contract-card {
+  @include card-base;
+  @include hover-lift;
+
+  &__header {
+    margin-bottom: pxToRem(16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      color: var(--font-color);
+      font-size: $card-title-size;
+      display: flex;
+      align-items: center;
+    }
+
+    .template-badge {
+      font-size: $small-font-size;
+      background: var(--status-pending-color);
+      padding: pxToRem(2) pxToRem(6);
+      border-radius: pxToRem(4);
+      margin-left: pxToRem(8);
+    }
+
+    .info-icon {
+      position: relative;
+      cursor: pointer;
+      padding: pxToRem(8);
+      margin: pxToRem(-8);
+
+      &:hover .info-tooltip {
+        display: block;
+      }
+
+      .info-tooltip {
+        display: none;
+        @include tooltip-base;
+        right: 0;
+        min-width: pxToRem(200);
+        top: 100%;
+        width: pxToRem(300);
+
+        p {
+          margin: pxToRem(4) 0;
+          font-size: $small-font-size;
+
+          strong {
+            font-weight: 600;
+            margin-right: pxToRem(4);
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    color: var(--font-color);
+
+    .loan-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: pxToRem(8);
+      margin-bottom: pxToRem(16);
+
+      .loan-detail {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: pxToRem(4) 0;
+        border-bottom: 1px solid var(--border-color);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .label {
+          color: var(--font-color-secondary);
+          font-size: $detail-font-size;
+        }
+
+        .value {
+          font-weight: 500;
+        }
+      }
+    }
+
+    .status {
+      display: inline-block;
+      padding: pxToRem(4) pxToRem(8);
+      border-radius: pxToRem(4);
+      font-size: $detail-font-size;
+
+      &--success {
+        background: var(--status-success-color);
+      }
+
+      &--pending {
+        background: var(--status-pending-color);
+      }
+
+      &--error {
+        background: var(--status-error-color);
+      }
+    }
+
+    .contract-id {
+      font-family: monospace;
+      font-size: $detail-font-size;
+      color: var(--font-color-secondary);
+      opacity: 0.8;
+    }
+
+    .contract-roles {
+      margin-top: pxToRem(16);
+
+      h4 {
+        font-size: pxToRem(16);
+        margin-bottom: pxToRem(8);
+        color: var(--font-color);
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+          margin: pxToRem(4) 0;
+          padding: pxToRem(4) 0;
+          border-bottom: 1px solid var(--border-color);
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          span.required {
+            color: var(--status-error-color);
+            font-size: $small-font-size;
+            margin-left: pxToRem(4);
+          }
+        }
+      }
+    }
+
+    .contract-status {
+      @include flex-end;
+      margin-top: pxToRem(16);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: pxToRem(16);
+    padding-top: pxToRem(16);
+    border-top: 1px solid var(--border-color);
+
+    .btn-sm {
+      padding: pxToRem(4) pxToRem(12);
+      font-size: $detail-font-size;
+      cursor: pointer; 
+    }
+  }
+}
+
+.signing-status {
+  margin: pxToRem(16) 0;
+  padding: pxToRem(16);
+  @include card-base;
+
+  h4 {
+    color: var(--font-color);
+    margin-bottom: pxToRem(8);
+  }
+
+  .signing-role {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: pxToRem(4) 0;
+
+    .label {
+      color: var(--font-color-secondary);
+      font-size: $detail-font-size;
+    }
+
+    .status {
+      font-size: $detail-font-size;
+      font-weight: 500;
+      
+      &--signed {
+        color: var(--secondary-color);
+      }
+      
+      &--unsigned {
+        color: var(--logout-color);
+      }
+    }
+  }
+}
+
+.header-icons {
+  display: flex;
+  gap: pxToRem(16);
+  align-items: center;
+}

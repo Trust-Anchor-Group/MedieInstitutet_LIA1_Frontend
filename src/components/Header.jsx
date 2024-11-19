@@ -37,6 +37,12 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/microloan">Micro Loans</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/contracts">Contracts</NavLink>
+                  </li>
+                  <li>
                     <LogoutBtn />
                   </li>
                 </ul>
