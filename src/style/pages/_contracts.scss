@@ -185,10 +185,12 @@
     padding-top: pxToRem(16);
     border-top: 1px solid var(--border-color);
 
-    .btn-sm {
-      padding: pxToRem(4) pxToRem(12);
-      font-size: $detail-font-size;
-      cursor: pointer; 
+    .btn-primary {
+      min-width: pxToRem(80);
+      background-color: var(--button-primary-color);
+      color: var(--button-text-color);
+      border: none;
+      border-radius: pxToRem(4);
     }
   }
 }
