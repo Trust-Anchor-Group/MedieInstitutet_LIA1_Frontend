@@ -1,67 +1,15 @@
 // src/pages/ContractsPage.jsx
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { Info, Users, Copy, Check, FlipHorizontal2 } from 'lucide-react';
+import { Info, Users, Copy, Check } from 'lucide-react';
+import useContracts from '../hooks/useContracts';
 
 const ContractsPage = () => {
-  const [contracts, setContracts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { contracts, isLoading, error } = useContracts();
   const navigate = useNavigate();
   const [copiedId, setCopiedId] = useState(null);
-
-  useEffect(() => {
-    const fetchContracts = async () => {
-      try {
-        const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
-        console.log(
-          "Fetching contracts from:",
-          `${baseUrl}/api/v1/contracts/available`
-        );
-
-        const response = await fetch(`${baseUrl}/api/v1/contracts/available`, {
-          credentials: "include",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
-
-        console.log("Response status:", response.status);
-        console.log(
-          "Response headers:",
-          Object.fromEntries(response.headers.entries())
-        );
-
-        // Check if response is actually JSON
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-          const text = await response.text();
-          console.error("Received non-JSON response:", text);
-          throw new Error("Expected JSON response but received HTML");
-        }
-
-        const data = await response.json();
-        console.log("Response data:", data);
-
-        if (data.success) {
-          setContracts(data.data);
-        } else {
-          console.error("API returned error:", data.message);
-          setError(data.message);
-        }
-      } catch (error) {
-        console.error("Error fetching contracts:", error);
-        setError("Failed to fetch contracts: " + error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchContracts();
-  }, []);
 
   const handleSignContract = (contractId) => {
     navigate(`/contracts/sign/${contractId}`);
