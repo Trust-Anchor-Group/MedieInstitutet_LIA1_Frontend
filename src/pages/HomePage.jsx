@@ -1,6 +1,6 @@
 import React from 'react';
 import { Banner } from '../components/Banner';
-import promoImage from '/public/assets/images/hero.jpg';
+import promoImage from '../assets/images/hero.jpg';
 
 const HomePage = () => {
   return (

@@ -1,12 +1,12 @@
 .banner {
     position: relative;
     margin-top: 20px;
+    border-radius: 15px;
 
 
     img {
         width: 100%;
         height: 100%;
-        position: absolute;
         object-fit: cover;
     }
 
@@ -18,6 +18,8 @@
 
     &__content {
         position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
         z-index: 2;
     }
@@ -34,6 +36,7 @@
 
         h1 {
             font-size: pxToRem(40);
+            font-weight: 400;
         }
     }
 }
