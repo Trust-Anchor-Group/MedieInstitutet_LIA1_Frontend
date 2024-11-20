@@ -51,7 +51,7 @@ const ContractsPage = () => {
             <ContractCard
               key={index}
               contract={contract}
-              onSignContract={handleSignContract}
+              onSignContract={() => handleSignContract(contract.Contract?.id)}
               copiedId={copiedId}
               onCopyId={handleCopyId}
             />

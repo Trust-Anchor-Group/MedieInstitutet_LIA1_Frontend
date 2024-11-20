@@ -31,6 +31,10 @@
   padding: 0.75rem 1.5rem;
   font-size: 1.1rem;
   font-weight: 600;
+  background-color: var(--button-primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: pxToRem(4);
 }
 
 .form__medium {

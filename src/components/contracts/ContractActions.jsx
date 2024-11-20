@@ -21,8 +21,8 @@ const ContractActions = ({ status, onSignContract }) => {
       {/* primary action button encapsulates contract signing interaction,
        * maintaining separation between UI triggering and business logic */}
       <button
-        className="btn-primary btn-sm"
-        onClick={onSignContract}
+        className="btn-primary"
+        onClick={() => onSignContract()}
       >
         Sign
       </button>
