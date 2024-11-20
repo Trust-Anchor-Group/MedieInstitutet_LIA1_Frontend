@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getIds } from '../api/base-api.mjs';
 import { FingerprintLockCircle, NavArrowRight } from 'iconoir-react';
 import { NavLink } from 'react-router-dom';
+import { MessageBox } from './MessageBox';
 
 export const IdList = () => {
   const [ids, setIds] = useState([]);
@@ -32,27 +33,33 @@ export const IdList = () => {
 
   return (
     <div className="id-list">
-      {ids.map((userId, index) => {
-        return (
-          <NavLink
-            to="/dashboard/id/details"
-            state={{ id: userId.id }}
-            className="btn__list id-action-btn shadow__general"
-            key={index}
-          >
-            <span>
-              <FingerprintLockCircle />
-            </span>
-            <span className="id-action-btn__content">{userId.id}</span>
-            <div className="id-action-btn__info">
-              <span className="id-action-btn__status">
-                {renderLabel(userId.status.state)}
+      {Array.isArray(ids) && ids.length > 0 ? (
+        ids?.map((userId, index) => {
+          return (
+            <NavLink
+              to="/dashboard/id/details"
+              state={{ id: userId.id }}
+              className="btn__list id-action-btn shadow__general"
+              key={index}
+            >
+              <span>
+                <FingerprintLockCircle />
               </span>
-              <NavArrowRight />
-            </div>
-          </NavLink>
-        );
-      })}
+              <span className="id-action-btn__content">{userId.id}</span>
+              <div className="id-action-btn__info">
+                <span className="id-action-btn__status">
+                  {renderLabel(userId.status.state)}
+                </span>
+                <NavArrowRight />
+              </div>
+            </NavLink>
+          );
+        })
+      ) : (
+        <MessageBox type="info">
+          <p>There are no registered IDs. Please add one to get started.</p>
+        </MessageBox>
+      )}
     </div>
   );
 };
