@@ -3,7 +3,6 @@
 // Page Layout
 .contracts {
   &__section {
-    padding: pxToRem(32);
     max-width: $pageWidthDesk;
     margin: 0 auto;
 
@@ -195,12 +194,19 @@
     padding-top: pxToRem(16);
     border-top: 1px solid var(--border-color);
 
+
+    .btn-sm {
+      padding: pxToRem(4) pxToRem(12);
+      font-size: $detail-font-size;
+      cursor: pointer;
+
     .btn-primary {
       min-width: pxToRem(80);
       background-color: var(--button-primary-color);
       color: var(--button-text-color);
       border: none;
       border-radius: pxToRem(4);
+
     }
   }
 }
@@ -229,11 +235,11 @@
     .status {
       font-size: $detail-font-size;
       font-weight: 500;
-      
+
       &--signed {
         color: var(--secondary-color);
       }
-      
+
       &--unsigned {
         color: var(--logout-color);
       }
