@@ -80,6 +80,16 @@
           }
         }
       }
+
+      .participants-icon {
+        &.open {
+          color: var(--secondary-color);
+        }
+
+        &.assigned {
+          color: var(--success-color);
+        }
+      }
     }
   }
 
