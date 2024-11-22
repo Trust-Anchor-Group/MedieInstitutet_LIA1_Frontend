@@ -2,8 +2,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../state/AuthContext';
-import MicroLoanForm from '../components/MicroLoanForm';
-import MicroLoanHero from '../components/microLoan/MicroLoanHero';
+import MicroLoanHero from '../components/microloan/MicroLoanHero';
+import MicroLoanFormSection from '../components/microloan/MicroLoanFormSection';
 import { useMicroLoanSubmission } from '../hooks/useMicroLoanSubmission';
 
 const MicroLoan = () => {
@@ -25,17 +25,11 @@ const MicroLoan = () => {
       {!showForm ? (
         <MicroLoanHero onStartLoan={handleStartLoan} />
       ) : (
-        <section className="microloan__form">
-          {feedback && (
-            <div className={`feedback feedback-${feedback.type}`}>
-              {feedback.message}
-            </div>
-          )}
-          <MicroLoanForm
-            onSubmit={handleSubmit}
-            onCancel={() => setShowForm(false)}
-          />
-        </section>
+        <MicroLoanFormSection
+          feedback={feedback}
+          onSubmit={handleSubmit}
+          onCancel={() => setShowForm(false)}
+        />
       )}
     </div>
   );
