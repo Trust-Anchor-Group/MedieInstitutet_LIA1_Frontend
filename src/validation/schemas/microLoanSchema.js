@@ -38,11 +38,11 @@ const microLoanSchema = Yup.object().shape({
     currency: Yup.string()
         .required('Currency is required')
         .matches(/^\w{3}$/, 'Currency must be 3 characters (e.g. USD)'),
-    installmentInterval: Yup.string()
+        installmentInterval: Yup.string()
         .required('Installment interval is required')
         .matches(
-            /^P(?:\d+Y)?(?:\d+M)?(?:\d+D)?(?:T(?:\d+H)?(?:\d+M)?(?:\d+S)?)?$/,
-            'Invalid duration format (e.g. P1M for 1 month)'
+            /^P(?:1M|[12]W)$/, // Updated pattern to only allow P1M, P1W, or P2W
+            'Invalid duration format. Must be P1M, P1W, or P2W'
         ),
     interestPerInstallment: Yup.number()
         .required('Interest rate is required')

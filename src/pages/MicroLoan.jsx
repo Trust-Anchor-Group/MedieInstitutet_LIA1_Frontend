@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../state/AuthContext';
 import UserContext from '../state/UserContext';
 import MicroLoanForm from '../components/MicroLoanForm';
+import MicroLoanHero from '../components/microLoan/MicroLoanHero';
 import { createMicroLoan } from '../api/base-api.mjs';
-import { Banner } from '../components/Banner';
-import moneyImage from '../assets/images/money.jpg';
 
 const MicroLoan = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -27,10 +26,8 @@ const MicroLoan = () => {
     console.log('handleSubmit called with data:', data);
 
     try {
-      // Structure contract data with roles
       const roles = {};
 
-      // If all legal IDs are filled, use them
       if (
         data.creatorId &&
         data.borrowerId &&
@@ -42,14 +39,12 @@ const MicroLoan = () => {
         roles.lender = data.lenderId;
         roles.trustProvider = data.trustProviderId;
       }
-      // Otherwise, all should be empty as per schema validation
 
       const contractData = {
         ...data,
         roles,
       };
 
-      // Remove the individual ID fields as they're now in roles object
       delete contractData.creatorId;
       delete contractData.borrowerId;
       delete contractData.lenderId;
@@ -90,19 +85,7 @@ const MicroLoan = () => {
   return (
     <div className="page__container">
       {!showForm ? (
-        <Banner
-          imageSource={moneyImage}
-          type="full"
-          contentPosition="center"
-          blur={true}
-          textPosition="center"
-        >
-          <h1>Micro Loan Service</h1>
-          <p>Create and manage micro loans with ease and transparency</p>
-          <button onClick={handleStartLoan} className="btn__cta">
-            Start a Micro Loan
-          </button>
-        </Banner>
+        <MicroLoanHero onStartLoan={handleStartLoan} />
       ) : (
         <section className="microloan__form">
           {feedback && (
